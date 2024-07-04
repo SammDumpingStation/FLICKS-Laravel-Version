@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    * {
+        transition: all 0.3s;
+    }
+    html {
+        font-family: "Poppins", "Inter", "Montserrat", "Arial", sans-serif;
+    }
+
+    body {
+        background-color: theme("colors.primary-black");
+        color: theme("colors.primary-white");
+        padding: 9.375rem;
+        position: relative;
+        margin-bottom: 1000px;
+        min-height: 100vh;
+    }
+    button {
+        background-color: theme("colors.primary-green");
+    }
+}
