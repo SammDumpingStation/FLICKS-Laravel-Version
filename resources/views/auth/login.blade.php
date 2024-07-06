@@ -2,41 +2,54 @@
     <x-slot:heading>
         Log in
     </x-slot:heading>
-    <form action="" method="POST" class="w-full max-w-[800px] mx-auto flex flex-col border-2 rounded-2xl border-secondary-grey py-14 gap-10 px-20">
+    <form action="/login" method="POST"
+        class="w-full max-w-[600px] mx-auto flex flex-col border-2 rounded-2xl border-secondary-grey py-14 gap-10 px-16">
 
         <x-auth.head-title>
             <x-slot:title>Welcome!</x-slot:title>
             <x-slot:description>Log in to get discounts when using FLICKS!</x-slot:description>
         </x-auth.head-title>
 
-        <section class="">
-            <label for="username" class="relative pl-10">
-                <img src="{{ Vite::asset('resources/icons/user.png') }}" class="h-8 w-8 absolute" alt="">
-                <input id="username" type="text" name="username" placeholder="Username or Email"
-                    class="bg-transparent w-full border-grey border-2 py-4 px-4 rounded-xl">
-            </label>
+        <section class="flex flex-col gap-5">
+            <x-form-input id="username" type="text" name="username" placeholder="Username or Email">
+                <x-slot:for>
+                    username
+                </x-slot:for>
+                <x-slot:icon>
+                    {{ Vite::asset('resources/icons/user.png') }}
+                </x-slot:icon>
+            </x-form-input>
 
-            <label for="password" class="input-form">
-                <img src="" alt="">
-                <input id="password" type="password" name="pwd" placeholder="Password">
-                <img src="" alt="">
-            </label>
+            <x-form-input id="password" type="password" name="pwd" placeholder="Password">
+                <x-slot:for>
+                    password
+                </x-slot:for>
+                <x-slot:icon>
+                    {{ Vite::asset('resources/icons/padlock.png') }}
+                </x-slot:icon>
+            </x-form-input>
 
-            <label for="keep-login" class="keep-login">
-                <input type="checkbox" name="keep-login" id="keep-login">
-                <p>Keep me Logged In</p>
-            </label>
+            <div class="flex gap-4 max-w-fit -mt-2 cursor-pointer">
+                <input type="checkbox" name="keep" id="keep" class="cursor-pointer">
+                <label for="keep" class="cursor-pointer">Keep me Logged In</label>
+            </div>
 
-            <h3 class="verdict"></h3>
-            <button class="proceed" name="Log-in" value="Log-in">Log-in</button>
-            <button class="forgot">Forgot Password?</button>
+            {{-- Error code goes here --}}
+
+            <div class="flex flex-col mt-10 gap-4">
+                <x-wide-green-button>Log-in</x-wide-green-button>
+                <a class="text-center hover:text-green cursor-pointer ">Forgot Password?</a>
+            </div>
         </section>
-        <hr class="line1">
-        <p>Don't have a FLICKS account?</p>
-        <hr class="line2">
-
-        <button type="submit" class="register-button" name="options" value="register">
-            Register</button>
+        <div class="flex flex-wrap items-center gap-8 mt-8">
+            <hr class="flex-1 ">
+            <p class="flex-1 min-w-fit">Don't have a FLICKS account?</p>
+            <hr class="flex-1">
+        </div>
+        <a
+            href="/register"
+            class="text-center cursor-pointer mx-auto border border-secondary-grey py-2 px-8 max-w-max rounded-md hover:border-green hover:text-green ">Register
+            Here!</a>
     </form>
 
 </x-auth.layout>
