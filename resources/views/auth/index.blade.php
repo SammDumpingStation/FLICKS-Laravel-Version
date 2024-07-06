@@ -1,28 +1,34 @@
 <x-auth>
-    <form action="" method="get">
-    <h1 class="title"><span class="operation-type">Register</span> with FLICKS Today!</h1>
-   <h2 class="title2">Log in to access your personalized dashboard and special offers!</h2>  {{-- Or Join us today and enjoy exclusive benefits and discounts! --}}
-    <section class="option-section">
-      <label for="have-account" class="option">
-        <input id="have-account" class="radio" type="radio" name="options" value="Customer">
-        <span class="custom-radio"></span>
-        <img src="" alt="">
-        <label for="have-account">Continue as Customer</label>
-      </label>
+    <x-slot:heading>
+        Authentication
+    </x-slot:heading>
+    <form action="/auth" method="POST" class="max-w-[600px] my-[5vh] mx-auto flex flex-col items-center justify-center gap-14">
+        @csrf
+        <h1 class="title"><span class="text-primary-green">Register</span> with FLICKS Today!</h1>
+        <h2 class="-mt-12 text-primary-green italic">Log in to access your personalized dashboard and special offers!
+        </h2> {{-- Or Join us today and enjoy exclusive benefits and discounts! --}}
+        <section class="w-full flex justify-between flex-wrap">
+            <x-auth-select for="guest">
+                <input id="guest" type="radio" name="option" value="guest">
+                <img src="{{ asset('icons/user.png') }}" alt="" class="h-8 w-8">
+                <label class="text-2xl font-semibold cursor-pointer" for="guest">Continue as Guest</label>
+            </x-auth-select>
 
-      <label for="no-account" class="option">
-        <input id="no-account" class="radio" type="radio" name="options" value="Admin">
-        <span class="custom-radio"></span>
-        <img src="" alt="">
-        <label for="no-account">Continue as Guest</label>
-      </label>
-      <section class="portal-button">
-        <button class="go-back" name="portal-button" value="cancel">
-            Cancel
-        </button>
-        <button class="proceed" name="portal-button" value="continue">
-            Continue
-        </button>
-      </section>
-  </form>
+
+            <x-auth-select for="auth">
+                <input id="auth" class="radio" type="radio" name="option" value="user">
+                <img src="{{ asset('icons/user.png') }}" class="h-8 w-8" alt="">
+                <label for="auth" class="text-2xl font-semibold cursor-pointer" >I have an account</label>
+            </x-auth-select>
+
+            <section>
+                <a href="/">
+                    Cancel
+                </a>
+                <button type="submit">
+                    Continue
+                </button>
+            </section>
+        </section>
+    </form>
 </x-auth>

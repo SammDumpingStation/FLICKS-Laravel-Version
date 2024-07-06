@@ -1,20 +1,39 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//Note to Self: Follow this naming convention in creating routes:
+// index: Display a listing of the resource. -> Ex. All Movie
+// create: Show the form for creating a new resource. -> Ex. Login Movie
+// store: Store a newly created resource in storage. -> Ex. Specific Movie
+// show: Display the specified resource. -> Ex. Specific Movie
+// edit: Show the form for editing the specified resource. -> Ex. Edit Movie
+// update: Update the specified resource in storage.
+// destroy: Remove the specified resource from storage.
+
 // Auth Route Files
-Route::get('/auth', function () {
-    return view('auth.index');
-});
+//Select Page -> Selects what type of user  is entering the site
+Route::view('/auth', 'auth.index');
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+//Log-in page -> Login Page for the user
+Route::view('/login', 'auth.login');
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+//Register Page -> Register Page for the user
+Route::view('/register', 'auth.register');
 
+//Home Page -> User
+//Flicks Main Page
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/auth', function (Request $request) {
+    $select = $request->input('option');
+    if ($select === 'user') {
+        return redirect('/login');
+    } else {
+        return redirect('/');
+    }
+});
+//Home Page -> Admin
