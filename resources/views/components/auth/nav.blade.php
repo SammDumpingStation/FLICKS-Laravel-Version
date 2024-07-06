@@ -4,6 +4,6 @@
             <img class="" src="{{ Vite::asset('resources/icons/logo.png') }}" alt="">
             <h1 class="text-4xl font-bold tracking-[0.7rem]">FLICKS</h1>
         </a>
-        <a class="min-w-max text-green" name="options" value="">Register Here!</a>
+        <a href="/check-id" class="min-w-max text-green" name="options" value="">Register Here!</a>
     </nav>
 </header>

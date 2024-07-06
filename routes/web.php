@@ -22,6 +22,9 @@ Route::view('/login', 'auth.login');
 //Register Page -> Register Page for the user
 Route::view('/register', 'auth.register');
 
+//Check Membership ID Page
+Route::view('/check-id', 'auth.check-id');
+
 //Home Page -> User
 //Flicks Main Page
 Route::get('/', function () {
@@ -30,10 +33,17 @@ Route::get('/', function () {
 
 Route::post('/auth', function (Request $request) {
     $select = $request->input('option');
-    if ($select === 'user') {
+    if (!$select) {
+        return redirect('/auth');
+    } elseif ($select === 'user') {
         return redirect('/login');
     } else {
         return redirect('/');
     }
+});
+
+//Checks the user if he is already a member of FLICKS
+Route::post('/check', function () {
+    return redirect('/register');
 });
 //Home Page -> Admin

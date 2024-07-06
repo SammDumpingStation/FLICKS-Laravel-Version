@@ -47,7 +47,7 @@
             <hr class="flex-1">
         </div>
         <a
-            href="/register"
+            href="/check-id"
             class="text-center cursor-pointer mx-auto border border-secondary-grey py-2 px-8 max-w-max rounded-md hover:border-green hover:text-green ">Register
             Here!</a>
     </form>
