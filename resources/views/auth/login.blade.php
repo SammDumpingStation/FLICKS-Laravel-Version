@@ -15,18 +15,17 @@
                 <x-slot:for>
                     username
                 </x-slot:for>
-                <x-slot:icon>
-                    {{ Vite::asset('resources/icons/user.png') }}
-                </x-slot:icon>
+                <label for="username">
+                    <img src="{{ Vite::asset('resources/icons/user.png') }}"
+                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
+                </label>
             </x-form-input>
 
             <x-form-input id="password" type="password" name="pwd" placeholder="Password">
-                <x-slot:for>
-                    password
-                </x-slot:for>
-                <x-slot:icon>
-                    {{ Vite::asset('resources/icons/padlock.png') }}
-                </x-slot:icon>
+                <label for="password">
+                    <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
+                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
+                </label>
             </x-form-input>
 
             <div class="flex gap-4 max-w-fit -mt-2 cursor-pointer">
@@ -46,8 +45,7 @@
             <p class="flex-1 min-w-fit">Don't have a FLICKS account?</p>
             <hr class="flex-1">
         </div>
-        <a
-            href="/check-id"
+        <a href="/check-id"
             class="text-center cursor-pointer mx-auto border border-secondary-grey py-2 px-8 max-w-max rounded-md hover:border-green hover:text-green ">Register
             Here!</a>
     </form>

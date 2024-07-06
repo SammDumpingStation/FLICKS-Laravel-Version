@@ -13,12 +13,10 @@
 
         <section class="flex flex-col gap-10">
             <x-form-input id="id-num" type="text" name="id-num" placeholder="Identification Number">
-                <x-slot:for>
-                    id-num
-                </x-slot:for>
-                <x-slot:icon>
-                    {{ Vite::asset('resources/icons/id.png') }}
-                </x-slot:icon>
+                <label for="id-num">
+                    <img src="{{ Vite::asset('resources/icons/id.png') }}"
+                        class="h-6 w-6 absolute left-4 top-3.5 cursor-pointer" alt="">
+                </label>
             </x-form-input>
 
             <x-auth.button-container>

@@ -19,6 +19,7 @@
                     {{ Vite::asset('resources/icons/user.png') }}
                 </x-slot:icon>
                 <x-slot:title>Continue as Guest</x-slot:title>
+                <x-slot:for>guest</x-slot:for>
             </x-auth.select>
 
             <x-auth.select for="auth">
@@ -27,6 +28,7 @@
                     {{ Vite::asset('resources/icons/user.png') }}
                 </x-slot:icon>
                 <x-slot:title>I have an acount</x-slot:title>
+                <x-slot:for>auth</x-slot:for>
             </x-auth.select>
         </section>
 
