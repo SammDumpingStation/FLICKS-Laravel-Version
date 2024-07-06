@@ -11,7 +11,7 @@
 </head>
 
 <body class="min-h-full bg-black text-white p-[150px] relative mb-[1000px]">
-    <x-nav-auth></x-nav-auth>
+    <x-auth.nav></x-auth.nav>
     {{ $slot }}
 </body>
 
