@@ -14,7 +14,7 @@
         <section class="w-full flex justify-between flex-wrap">
             <x-auth.select for="guest">
                 <x-radio-button id="guest" value="guest" name="option" />
-                <img src="{{ asset('icons/user.png') }}" alt="" class="h-8 w-8">
+                <img src="{{ Vite::asset('resources/icons/user.png') }}" alt="" class="h-8 w-8">
                 <label class="text-2xl font-medium cursor-pointer group-hover:text-green" for="guest">Continue as
                     Guest</label>
             </x-auth.select>
@@ -22,7 +22,7 @@
 
             <x-auth.select for="auth">
                 <x-radio-button id="auth" value="user" name="option" />
-                <img src="{{ asset('icons/user.png') }}" class="h-8 w-8" alt="">
+                <img src="{{ Vite::asset('resources/icons/user.png') }}" class="h-8 w-8" alt="">
                 <label for="auth" class="text-2xl font-medium cursor-pointer group-hover:text-green">I have an
                     account</label>
             </x-auth.select>

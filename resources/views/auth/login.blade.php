@@ -10,8 +10,8 @@
         </x-auth.head-title>
 
         <section class="">
-            <label for="username" class="relative">
-                <img src="" alt="">
+            <label for="username" class="relative pl-10">
+                <img src="{{ Vite::asset('resources/icons/user.png') }}" class="h-8 w-8 absolute" alt="">
                 <input id="username" type="text" name="username" placeholder="Username or Email"
                     class="bg-transparent w-full border-grey border-2 py-4 px-4 rounded-xl">
             </label>
