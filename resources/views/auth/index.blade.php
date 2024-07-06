@@ -27,12 +27,12 @@
         </section>
 
         <section class="flex w-full gap-8">
-            <a href="/" class="flex-1 basis-full text-center bg-red p-3 rounded-md">
+            <a href="/" class="flex-1 basis-full text-center p-3 border border-transparent rounded-md hover:bg-red">
                 Cancel
             </a>
-            <button type="submit" class="flex-1 basis-full bg-green p-3 rounded-md">
+            <x-wide-green-button>
                 Continue
-            </button>
+            </x-wide-green-button>
         </section>
     </form>
 </x-auth>
