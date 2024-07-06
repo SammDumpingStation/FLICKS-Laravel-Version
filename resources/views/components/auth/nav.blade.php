@@ -1,9 +1,15 @@
-<header class="absolute top-0 right-0 w-full p-6 z-50">
+<header class="fixed top-0 right-0 w-full p-6 z-50">
     <nav class="flex justify-between items-center">
         <a class="flex items-center cursor-pointer gap-4" href="/auth">
             <img class="" src="{{ Vite::asset('resources/icons/logo.png') }}" alt="">
             <h1 class="text-4xl font-bold tracking-[0.7rem]">FLICKS</h1>
         </a>
-        <a href="/check-id" class="min-w-max text-green" name="options" value="">Register Here!</a>
+        @if (request()->is('check-id'))
+            <a></a>
+        @elseif (request()->is('register'))
+            <a href="/login" class="min-w-max text-green" name="options" value="">Login Here!</a>
+        @else
+            <a href="/check-id" class="min-w-max text-green" name="options" value="">Register Here!</a>
+        @endif
     </nav>
 </header>

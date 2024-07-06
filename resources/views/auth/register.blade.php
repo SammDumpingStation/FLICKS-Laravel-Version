@@ -3,7 +3,8 @@
         Register
     </x-slot:heading>
 
-    <form class="w-full max-w-[700px] mx-auto flex flex-col gap-14" action="" method="post">
+    <form class="w-full max-w-[700px] mx-auto flex flex-col gap-14" action="/register" method="post">
+        @csrf
         <x-auth.head-title>
             <x-slot:title>Registration Form</x-slot:title>
             <x-slot:description>Register to watch movies and get discounts!</x-slot:description>
@@ -52,5 +53,4 @@
         <p class="text-center -mt-4">Already have an account? <a class="text-green" href="/login">Log-in</a>
         </p>
     </form>
-
 </x-auth.layout>

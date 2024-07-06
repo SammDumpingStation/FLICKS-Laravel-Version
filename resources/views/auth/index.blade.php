@@ -3,7 +3,7 @@
         Authentication
     </x-slot:heading>
     <form action="/auth" method="POST"
-        class="max-w-[600px] my-[5vh] mx-auto flex flex-col items-center justify-center gap-14">
+        class="max-w-[600px] w-full mx-auto flex flex-col items-center justify-center gap-14">
         @csrf
 
         <x-auth.head-title>
@@ -32,6 +32,11 @@
             </x-auth.select>
         </section>
 
+        <div class="-mt-10 h-4">
+            @if (session('error'))
+                <p class=" text-red italic">{{ session('error') }}</p>
+            @endif
+        </div>
         <x-auth.button-container>
             <x-cancel-transparent href="/">Cancel</x-cancel-transparent>
             <x-wide-green-button> Continue</x-wide-green-button>
