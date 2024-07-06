@@ -29,7 +29,7 @@
                     <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
                 </label>
-                <x-form-icons class="top-[13px]" src="{{ Vite::asset('resources/icons/hide.png') }}" />
+                <x-form-icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
             </x-form-input>
             @error('password')
                 <p class="-mt-4 text-red italic">{{ $message }}</p>

@@ -34,14 +34,16 @@
 
             <x-form-container>
                 <x-form-label for="password">Password</x-form-label>
-                <x-form-input class="pl-4" name="password" id="password" />
-                <x-form-icons id="toggleBtn" src="{{ Vite::asset('resources/icons/hide.png') }}" alt=""/>
+                <x-form-input class="pl-4" name="password" id="password">
+                    <x-form-icons id="toggleBtn" src="{{ Vite::asset('resources/icons/hide.png') }}"
+                        alt="" /></x-form-input>
             </x-form-container>
 
             <x-form-container>
                 <x-form-label for="password_confirmation">Confirm Password</x-form-label>
-                <x-form-input class="pl-4" name="password_confirmation" id="password_confirmation" />
-                <x-form-icons id="repeatBtn" src="{{ Vite::asset('resources/icons/hide.png') }}" alt=""/>
+                <x-form-input class="pl-4" name="password_confirmation" id="password_confirmation">
+                    <x-form-icons id="repeatBtn" src="{{ Vite::asset('resources/icons/hide.png') }}"
+                        alt="" /></x-form-input>
             </x-form-container>
         </section>
 
