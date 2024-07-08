@@ -15,7 +15,7 @@
                 </x-slot:for>
                 <label for="email">
                     <img src="{{ Vite::asset('resources/icons/user.png') }}"
-                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
+                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer z-10" alt="">
                 </label>
             </x-form-input>
             @error('email')
@@ -24,7 +24,7 @@
             <x-form-input id="password" type="password" name="password" placeholder="Password">
                 <label for="password">
                     <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
-                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
+                        class="h-6 w-6 absolute left-4 top-3 cursor-pointer z-10" alt="">
                 </label>
                 <x-form-icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
             </x-form-input>

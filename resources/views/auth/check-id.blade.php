@@ -13,8 +13,8 @@
             <div>
                 <x-form-input id="id-num" type="text" name="id-num" placeholder="Identification Number">
                     <label for="id-num">
-                        <img src="{{ Vite::asset('resources/icons/id.png') }}"
-                            class="h-6 w-6 absolute left-4 top-3.5 cursor-pointer" alt="">
+                        <img src="{{ Vite::asset('/resources/icons/id.png') }}"
+                            class="h-6 w-6 absolute z-10 left-4 top-3.5 cursor-pointer" alt="">
                     </label>
                 </x-form-input>
                 @error('id-num')
