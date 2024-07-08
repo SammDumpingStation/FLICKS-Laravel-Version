@@ -12,12 +12,18 @@
         </x-auth.head-title>
 
         <section class="flex flex-col gap-10">
-            <x-form-input id="id-num" type="text" name="id-num" placeholder="Identification Number">
-                <label for="id-num">
-                    <img src="{{ Vite::asset('resources/icons/id.png') }}"
-                        class="h-6 w-6 absolute left-4 top-3.5 cursor-pointer" alt="">
-                </label>
-            </x-form-input>
+            <div>
+                <x-form-input id="id-num" type="text" name="id-num" placeholder="Identification Number">
+                    <label for="id-num">
+                        <img src="{{ Vite::asset('resources/icons/id.png') }}"
+                            class="h-6 w-6 absolute left-4 top-3.5 cursor-pointer" alt="">
+                    </label>
+                </x-form-input>
+                @error('id-num')
+                    <p class=" text-red italic">{{ $message }}</p>
+                @enderror
+            </div>
+
 
             <x-auth.button-container>
                 <x-cancel-transparent href="/auth">Cancel</x-cancel-transparent>
