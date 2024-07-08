@@ -71,8 +71,8 @@
         </section>
 
         <x-auth.button-container>
-            <x-cancel-transparent href='/check-id'>Cancel</x-cancel-transparent>
-            <x-wide-green-button type="submit">Create Account</x-wide-green-button>
+            <x-button color="transparent" tag="a" href='/check'>Cancel</x-button>
+            <x-button type="wide">Create Account</x-button>
         </x-auth.button-container>
 
         <p class="text-center -mt-4">Already have an account? <a class="text-green" href="/login">Log-in</a>

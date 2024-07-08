@@ -24,8 +24,8 @@
 
 
             <x-auth.button-container>
-                <x-cancel-transparent href="/auth">Cancel</x-cancel-transparent>
-                <x-wide-green-button> Continue</x-wide-green-button>
+                <x-button color="transparent" tag="a" href="/auth">Cancel</x-button>
+                <x-button type="wide"> Continue</x-button>
             </x-auth.button-container>
             <a href="/not-member" class="text-center -mt-4 text-white hover:text-green">Not a member?</a>
         </section>

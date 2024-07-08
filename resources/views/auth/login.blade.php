@@ -37,7 +37,7 @@
             </div>
 
             <div class="flex flex-col mt-10 gap-4">
-                <x-wide-green-button>Log-in</x-wide-green-button>
+                <x-button type="wide">Log-in</x-button>
                 <a class="text-center hover:text-green cursor-pointer ">Forgot Password?</a>
             </div>
         </section>

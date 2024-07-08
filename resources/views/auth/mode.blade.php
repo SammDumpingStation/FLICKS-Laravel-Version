@@ -25,8 +25,8 @@
             @endif
         </div>
         <x-auth.button-container>
-            <x-cancel-transparent href="/">Cancel</x-cancel-transparent>
-            <x-wide-green-button> Continue</x-wide-green-button>
+            <x-button tag="a" color="transparent" href="/">Cancel</x-button>
+            <x-button type="wide"> Continue</x-button>
         </x-auth.button-container>
     </form>
 </x-auth.layout>

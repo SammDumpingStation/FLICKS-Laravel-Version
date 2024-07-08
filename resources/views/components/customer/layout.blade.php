@@ -10,7 +10,7 @@
     <title>{{ $heading }}</title>
 </head>
 
-<body class="min-h-[100vh] py-[15vh] bg-black text-white flex justify-center items-center relative">
+<body class="min-h-[100vh] py-[15vh] bg-black text-white flex justify-center relative">
     <x-customer.nav></x-customer.nav>
     {{ $slot }}
 </body>
