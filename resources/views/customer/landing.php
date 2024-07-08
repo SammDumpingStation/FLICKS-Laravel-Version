@@ -1,28 +1,3 @@
-<?php
-session_start();
-include_once '../../classes/dbh.class.php';
-$dbhconnect = new Dbh();
-try {
-    $nowShowing = "SELECT DISTINCT movie.id, movie.title, movie.poster, cinema.number, movie_status.status FROM movie LEFT JOIN cinema ON movie.id = cinema.movie_id LEFT JOIN movie_status ON movie.id = movie_status.movie_id WHERE movie_status.status = 'now showing' ORDER BY cinema.number";
-    $nowStmt = $dbhconnect->connection()->prepare($nowShowing);
-    $nowStmt->execute();
-    $nowResults = $nowStmt->fetchALL(PDO::FETCH_ASSOC);
-
-    $nextPicture = "SELECT DISTINCT movie.id, movie.title, movie.poster, cinema.number, movie_status.status FROM movie LEFT JOIN cinema ON movie.id = cinema.movie_id LEFT JOIN movie_status ON movie.id = movie_status.movie_id  WHERE movie_status.status = 'next picture'";
-    $nextStmt = $dbhconnect->connection()->prepare($nextPicture);
-    $nextStmt->execute();
-    $nextResults = $nextStmt->fetchALL(PDO::FETCH_ASSOC);
-
-    $comingSoon = "SELECT DISTINCT movie.id, movie.title, movie.poster, cinema.number, movie_status.status FROM movie LEFT JOIN cinema ON movie.id = cinema.movie_id LEFT JOIN movie_status ON movie.id = movie_status.movie_id  WHERE movie_status.status = 'coming soon'";
-    $comingStmt = $dbhconnect->connection()->prepare($comingSoon);
-    $comingStmt->execute();
-    $comingResults = $comingStmt->fetchALL(PDO::FETCH_ASSOC);
-
-} catch (\Throwable $th) {
-    die("Query Failed. " . $th->getMessage());
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +31,8 @@ try {
               </div>
               <h2 class="movie-title"><?php echo htmlspecialchars($key['title'])?></h2>
           </button>
-          <?php }?>       
-        </section>  
+          <?php }?>
+        </section>
       </div>
 
       <div class="movies-container">
@@ -70,7 +45,7 @@ try {
               </div>
               <h2 class="movie-title"><?php echo htmlspecialchars($next['title'])?></h2>
           </button>
-          <?php }?>       
+          <?php }?>
         </section>
       </div>
 
@@ -84,7 +59,7 @@ try {
                 </div>
                 <h2 class="movie-title"><?php echo htmlspecialchars($coming['title']) ?></h2>
             </button>
-          <?php }?>       
+          <?php }?>
         </section>
       </div>
     </form>
