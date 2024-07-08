@@ -6,32 +6,26 @@
         class="w-full max-w-[600px] mx-auto flex flex-col border-2 rounded-2xl border-secondary-grey py-14 gap-10 px-16">
         @csrf
 
-        <x-auth.head-title>
-            <x-slot:title>Welcome!</x-slot:title>
-            <x-slot:description>Log in to get discounts when using FLICKS!</x-slot:description>
-        </x-auth.head-title>
+        <x-auth.head-title title="Welcome!" description="Log in to get discounts when using FLICKS!"/>
 
         <section class="flex flex-col gap-5">
-            <x-form-input id="username" type="text" name="username" placeholder="Username or Email">
+            <x-form-input id="email" type="text" name="email" placeholder="Email">
                 <x-slot:for>
                     username
                 </x-slot:for>
-                <label for="username">
+                <label for="email">
                     <img src="{{ Vite::asset('resources/icons/user.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
                 </label>
             </x-form-input>
-            @error('username')
-                <p class="-mt-4 text-red italic">{{ $message }}</p>
-            @enderror
-            <x-form-input id="password" type="password" name="pwd" placeholder="Password">
+            <x-form-input id="password" type="password" name="password" placeholder="Password">
                 <label for="password">
                     <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer" alt="">
                 </label>
                 <x-form-icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
             </x-form-input>
-            @error('password')
+            @error('email')
                 <p class="-mt-4 text-red italic">{{ $message }}</p>
             @enderror
             <div class="flex gap-4 max-w-fit -mt-2 cursor-pointer">

@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 
 //Note to Self: Follow this naming convention in creating routes:
 // index: Display a listing of the resource. -> Ex. All Movie
@@ -49,20 +50,31 @@ Route::post('/check', function (Request $request) {
 
 //Checks the user if he is already a member of FLICKS
 Route::post('/login', function (Request $request) {
-    //get the data and validate
-    $request->validate([
-        'username' => ['required'],
-        'password' => ['required'],
-    ]);
+        //Validate
+        $attributes = $request->validate([
+            'email' => ['required', 'email', 'max:254'],
+            'password' => ['required'],
+        ]);
+
+        //Attempt to sign in
+        if (!Auth::attempt($attributes)) {
+            throw ValidationException::withMessages([
+                'email' => 'Sorry wrong credentials. Try Again'
+            ]);
+        }
+
+        $request->session()->regenerate();
+
+        return redirect('/');
 });
 
 //Checks the user if he is already a member of FLICKS
 Route::post('/register', function (Request $request) {
     $attributes = $request->validate([
-        'first-name' => ['required', 'string', 'max:255'],
-        'last-name' => ['required', 'string', 'max:255'],
+        'first_name' => ['required', 'string', 'max:255'],
+        'last_name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'phone-number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+        'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
     //Insert/Store in the database
@@ -72,7 +84,6 @@ Route::post('/register', function (Request $request) {
     Auth::login($user);
     //Redirect the user somewhere
     return redirect('/');
-
 });
 
 //Home Page -> User

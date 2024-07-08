@@ -6,29 +6,16 @@
         class="max-w-[600px] w-full mx-auto flex flex-col items-center justify-center gap-14">
         @csrf
 
-        <x-auth.head-title>
-            <x-slot:title><span class="text-green">Register</span> with FLICKS Today!</x-slot:title>
-            <x-slot:description>Log in to access your personalized dashboard and special offers!</x-slot:description>
-        </x-auth.head-title>
+        <x-auth.head-title span="Register" title="with FLICKS Today!" description="Log in to access your personalized dashboard and special offers!"/>
 
         <section class="w-full flex justify-between flex-wrap">
 
-            <x-auth.select for="guest">
+            <x-auth.select for="guest" icon="{{ Vite::asset('resources/icons/user.png') }}" title="Continue as Guest">
                 <x-radio-button id="guest" value="guest" name="option" />
-                <x-slot:icon>
-                    {{ Vite::asset('resources/icons/user.png') }}
-                </x-slot:icon>
-                <x-slot:title>Continue as Guest</x-slot:title>
-                <x-slot:for>guest</x-slot:for>
             </x-auth.select>
 
-            <x-auth.select for="auth">
+            <x-auth.select for="auth" icon="{{ Vite::asset('resources/icons/user.png') }}" title="I Have an Account">
                 <x-radio-button id="auth" value="user" name="option" />
-                <x-slot:icon>
-                    {{ Vite::asset('resources/icons/user.png') }}
-                </x-slot:icon>
-                <x-slot:title>I have an acount</x-slot:title>
-                <x-slot:for>auth</x-slot:for>
             </x-auth.select>
         </section>
 

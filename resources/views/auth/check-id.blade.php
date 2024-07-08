@@ -5,11 +5,9 @@
     <form action="/check" method="POST"
         class="w-full max-w-[600px] mx-auto flex flex-col border-2 rounded-2xl border-secondary-grey p-10 gap-14">
         @csrf
-        <x-auth.head-title>
-            <x-slot:title>Membership ID</x-slot:title>
-            <x-slot:description>Only registered members of FLICKS are allowed to have an account. Please verify if you
-                are currently a member or not.</x-slot:description>
-        </x-auth.head-title>
+        <x-auth.head-title title="Membership ID"
+            description="Only registered members of FLICKS are allowed to have an account. Please verify if you
+                are currently a member or not." />
 
         <section class="flex flex-col gap-10">
             <div>

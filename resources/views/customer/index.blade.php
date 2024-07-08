@@ -10,6 +10,8 @@
     @auth
     <p>{{ Auth::user()->first_name }}</p>
     @endauth
+    @guest
     <header>Hello</header>
+    @endguest
 </body>
 </html>
