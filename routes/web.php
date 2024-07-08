@@ -41,7 +41,9 @@ Route::post('/register', [RegisteredUsersController::class, 'store']);
 
 //Home Page -> User
 //Flicks Main Page
-Route::get('/', function () {
-    return view('customer.index');
-});
+Route::view('/', 'customer.movies.index');
+
+//Individual Movie
+Route::view('/movies', 'customer.movies.show');
+
 //Home Page -> Admin

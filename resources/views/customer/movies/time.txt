@@ -1,0 +1,20 @@
+<div class="times-container flex">
+<?php $movie_ID = $key['id'];
+    $queryShowTimes = "SELECT time_start FROM cinema WHERE movie_id = :movieID";
+    $stmt = $dbhconnect->connection()->prepare($queryShowTimes);
+    $stmt->bindParam(":movieID", $movie_ID, PDO::PARAM_INT);
+    $stmt->execute();
+    $timeResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+<?php if (empty($timeResult)) {?>
+    <h5 class="showtime flex">Not Currently Showing</h5>
+    <?php } else {
+    foreach ($timeResult as $time) {
+        $timeFromDbh = $time['time_start'];
+        $timestamp = strtotime($timeFromDbh);
+        $formattedTime = date("h:i A", $timestamp);
+        $finalTime = str_replace('AM', 'PM', $formattedTime);?>
+        <h5 class="showtimes flex"><?php echo htmlspecialchars($finalTime)?></h5></h6>
+        <?php }
+            }?>
+</div>

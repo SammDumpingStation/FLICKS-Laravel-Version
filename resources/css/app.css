@@ -9,4 +9,7 @@
     html {
         font-family: "Poppins", "Inter", "Montserrat", "Arial", sans-serif;
     }
+    a {
+        cursor: pointer;
+    }
 }
