@@ -46,7 +46,7 @@
             <p class="flex-1 min-w-fit">Don't have a FLICKS account?</p>
             <hr class="flex-1">
         </div>
-        <a href="/check-id"
+        <a href="/check"
             class="text-center cursor-pointer mx-auto border border-secondary-grey py-2 px-8 max-w-max rounded-md hover:border-green hover:text-green ">Register
             Here!</a>
     </form>

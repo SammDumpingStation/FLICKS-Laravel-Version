@@ -43,7 +43,7 @@ class SessionController extends Controller
             'password' => ['required'],
         ]);
 
-//Attempt to sign in
+        //Attempt to sign in
         if (!Auth::attempt($attributes)) {
             throw ValidationException::withMessages([
                 'password' => 'Sorry wrong credentials. Try Again',
@@ -52,7 +52,6 @@ class SessionController extends Controller
 
         $request->session()->regenerate();
         return redirect('/');
-
     }
 
     /**
@@ -62,6 +61,5 @@ class SessionController extends Controller
     {
         Auth::logout();
         return redirect('/');
-
     }
 }

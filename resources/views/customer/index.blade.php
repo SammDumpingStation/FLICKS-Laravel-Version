@@ -1,4 +1,7 @@
 <x-customer.layout>
+    <x-slot:heading>
+        Home Page
+    </x-slot:heading>
     <form action="/logout" method="post">
         @csrf
         @auth

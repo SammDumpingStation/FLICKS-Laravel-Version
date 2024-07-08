@@ -1,5 +1,3 @@
-@props(['heading']);
-
 <!DOCTYPE html>
 <html lang="en">
 
