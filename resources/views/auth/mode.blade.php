@@ -11,11 +11,11 @@
         <section class="w-full flex justify-between flex-wrap">
 
             <x-auth.select for="guest" icon="{{ Vite::asset('resources/icons/user.png') }}" title="Continue as Guest">
-                <x-radio-button id="guest" value="guest" name="option" />
+                <x-button.radio id="guest" value="guest" name="option" />
             </x-auth.select>
 
             <x-auth.select for="auth" icon="{{ Vite::asset('resources/icons/user.png') }}" title="I Have an Account">
-                <x-radio-button id="auth" value="user" name="option" />
+                <x-button.radio id="auth" value="user" name="option" />
             </x-auth.select>
         </section>
 
@@ -24,9 +24,9 @@
                 <p class=" text-red italic">{{ session('error') }}</p>
             @endif
         </div>
-        <x-auth.button-container>
-            <x-button tag="a" color="transparent" href="/">Cancel</x-button>
-            <x-button type="wide"> Continue</x-button>
-        </x-auth.button-container>
+        <x-button.wide-container>
+            <x-button.buttons tag="a" color="transparent" href="/">Cancel</x-button.buttons>
+            <x-button.buttons type="wide"> Continue</x-button.buttons>
+        </x-button.wide-container>
     </form>
 </x-auth.layout>

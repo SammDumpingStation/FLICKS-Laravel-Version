@@ -9,7 +9,7 @@
         <x-auth.head-title title="Welcome!" description="Log in to get discounts when using FLICKS!" />
 
         <section class="flex flex-col gap-5">
-            <x-form-input id="email" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+            <x-form.input id="email" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
                 <x-slot:for>
                     username
                 </x-slot:for>
@@ -17,17 +17,17 @@
                     <img src="{{ Vite::asset('resources/icons/user.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer z-10" alt="">
                 </label>
-            </x-form-input>
+            </x-form.input>
             @error('email')
                 <p class="-mt-4 text-red italic">{{ $message }}</p>
             @enderror
-            <x-form-input id="password" type="password" name="password" placeholder="Password">
+            <x-form.input id="password" type="password" name="password" placeholder="Password">
                 <label for="password">
                     <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer z-10" alt="">
                 </label>
-                <x-form-icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
-            </x-form-input>
+                <x-form.icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
+            </x-form.input>
             @error('password')
                 <p class="-mt-4 text-red italic">{{ $message }}</p>
             @enderror
@@ -37,7 +37,7 @@
             </div>
 
             <div class="flex flex-col mt-10 gap-4">
-                <x-button type="wide">Log-in</x-button>
+                <x-button.buttons type="wide">Log-in</x-button.buttons>
                 <a class="text-center hover:text-green cursor-pointer ">Forgot Password?</a>
             </div>
         </section>

@@ -1,3 +1,3 @@
-<section class="flex w-full border gap-8">
+<section class="flex w-full gap-8">
     {{ $slot }}
 </section>

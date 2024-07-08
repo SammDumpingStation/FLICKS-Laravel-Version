@@ -10,7 +10,7 @@ class RegisteredUsersController extends Controller
     public function check(Request $request)
     {
         $request->validate([
-            'id-num' => ['required', 'string', 'max:255'],
+            'id_number' => ['required', 'string', 'max:255'],
         ]);
         return redirect('/register');
 
