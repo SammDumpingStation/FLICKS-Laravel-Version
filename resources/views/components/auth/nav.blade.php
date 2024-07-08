@@ -4,12 +4,12 @@
             <img class="" src="{{ Vite::asset('resources/icons/logo.png') }}" alt="">
             <h1 class="text-4xl font-bold tracking-[0.7rem]">FLICKS</h1>
         </a>
-        @if (request()->is('check-id'))
-            <a></a>
+        @if (request()->is('check'))
+            
         @elseif (request()->is('register'))
             <a href="/login" class="min-w-max text-green" name="options" value="">Login Here!</a>
         @else
-            <a href="/check-id" class="min-w-max text-green" name="options" value="">Register Here!</a>
+            <a href="/check" class="min-w-max text-green" name="options" value="">Register Here!</a>
         @endif
     </nav>
 </header>

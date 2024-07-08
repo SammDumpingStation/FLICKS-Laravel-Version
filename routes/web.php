@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\RegisteredUsersController;
+use App\Http\Controllers\SessionController;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
 
 //Note to Self: Follow this naming convention in creating routes:
 // index: Display a listing of the resource. -> Ex. All Movie
@@ -16,75 +16,28 @@ use Illuminate\Validation\ValidationException;
 // destroy: Remove the specified resource from storage.
 
 // Auth Route Files
-//Select Page -> Selects what type of user  is entering the site
-Route::view('/auth', 'auth.index');
-
-//Log-in page -> Login Page for the user
-Route::view('/login', 'auth.login');
-
-//Register Page -> Register Page for the user
-Route::view('/register', 'auth.register');
-
-//Check Membership ID Page
-Route::view('/check-id', 'auth.check-id');
-
 //POST requests for authentication
-Route::post('/auth', function (Request $request) {
-    $select = $request->input('option');
-    if (!$select) {
-        return redirect('/auth')->with('error', 'Please select between the two choices above. Try Again');
-    } elseif ($select === 'user') {
-        return redirect('/login');
-    } else {
-        return redirect('/');
-    }
-});
 
+//Log-in user
+//Log-in Form Page
+Route::get('/login', [SessionController::class, 'create']);
+//Mode Select -> Page where user selects what type of user they are.
+Route::get('/auth', [SessionController::class, 'modeCreate']);
+//Mode -> Selects if user wants to Log-in or as Guest
+Route::post('/auth', [SessionController::class, 'mode']);
+//Log-in -> Create a session for user
+Route::post('/login', [SessionController::class, 'store']);
+//Log-out -> Destroy the current session
+Route::post('/logout', [SessionController::class, 'destroy']);
+
+//Register User
+Route::get('/check', [RegisteredUsersController::class, 'checkCreate']);
+//Checks the user if he has a membership card to qualify
+Route::post('/check', [RegisteredUsersController::class, 'check']);
 //Checks the user if he is already a member of FLICKS
-Route::post('/check', function (Request $request) {
-    $request->validate([
-        'id-num' => ['required', 'string', 'max:255'],
-    ]);
-    return redirect('/register');
-});
-
-//Checks the user if he is already a member of FLICKS
-Route::post('/login', function (Request $request) {
-        //Validate
-        $attributes = $request->validate([
-            'email' => ['required', 'email', 'max:254'],
-            'password' => ['required'],
-        ]);
-
-        //Attempt to sign in
-        if (!Auth::attempt($attributes)) {
-            throw ValidationException::withMessages([
-                'email' => 'Sorry wrong credentials. Try Again'
-            ]);
-        }
-
-        $request->session()->regenerate();
-
-        return redirect('/');
-});
-
-//Checks the user if he is already a member of FLICKS
-Route::post('/register', function (Request $request) {
-    $attributes = $request->validate([
-        'first_name' => ['required', 'string', 'max:255'],
-        'last_name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
-    ]);
-    //Insert/Store in the database
-    $user = User::create($attributes);
-
-    //Login User
-    Auth::login($user);
-    //Redirect the user somewhere
-    return redirect('/');
-});
+Route::get('/register', [RegisteredUsersController::class, 'create']);
+//Register Page -> Register Page for the user
+Route::post('/register', [RegisteredUsersController::class, 'store']);
 
 //Home Page -> User
 //Flicks Main Page

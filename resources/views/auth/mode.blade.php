@@ -6,7 +6,7 @@
         class="max-w-[600px] w-full mx-auto flex flex-col items-center justify-center gap-14">
         @csrf
 
-        <x-auth.head-title span="Register" title="with FLICKS Today!" description="Log in to access your personalized dashboard and special offers!"/>
+        <x-auth.head-title span="Log-In" title="with FLICKS Today!" description="Log in to access your personalized dashboard and special offers!"/>
 
         <section class="w-full flex justify-between flex-wrap">
 
