@@ -1,0 +1,166 @@
+.current {
+  background-color: var(--primary-green);
+  border-top-left-radius: 8px;
+  font-weight: 600;
+}
+
+.poster-container {
+  max-width: 356px;
+  max-height: 528px;
+}
+.current-contents {
+  gap: 2.625rem;
+}
+
+.movie-details {
+  flex-direction: column;
+  width: 100%;
+}
+
+.title, .price {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.below-title {
+  margin-left: 1.5rem;
+}
+
+.price {
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+}
+
+.timeslot {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-desc {
+  font-style: italic;
+  color: var(--primary-grey);
+  margin-left: 32px;
+  margin-top: 24px;
+}
+
+.time-option {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid var(--primary-green);
+  padding: 12px 16px;
+  width: 50%;
+  text-align: center;
+  align-self: center;
+}
+
+.sec-head {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.sec-desc {
+  font-style: italic;
+  color: var(--primary-grey);
+  margin-left: 32px;
+  margin-bottom: 24px;
+}
+
+.times-container {
+  gap: 16px;
+  width: 400px;
+  margin-left: 3.5rem;
+}
+
+.times-container button {
+  flex-basis: 100%;
+  min-width: fit-content;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: transparent;
+  border: 2px solid var(--primary-green);
+}
+
+.times-container button:hover {
+  background-color: rgba(20, 162, 127, 0.2);
+  font-weight: 700;
+}
+
+.sect-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 56px;
+}
+
+.quantity-div, .total, .info-quant {
+  margin-left: 88px;
+}
+
+.quantity-div {
+  margin-block: 8px;
+  border: 2px solid var(--primary-green);
+  max-width: fit-content;
+}
+
+.operators {
+  padding: 0.5rem 1rem;
+  width: 55px;
+  text-align: center;
+}
+
+.operators:hover {
+  font-weight: 700;
+  cursor: pointer;
+  background-color: rgba(20, 162, 127, 0.2);
+}
+
+.input {
+  max-width: 5rem;
+  color: var(--primary-white);
+  text-align: center;
+  border-inline: 2px solid var(--primary-green);
+}
+
+.input:focus {
+  outline: 1px solid var(--primary-white);
+}
+
+/* Hide the spinners for WebKit browsers (Chrome, Safari, Edge) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide the spinners for Firefox */
+input[type=number] {
+  appearance: textfield;
+}
+
+.info-quant {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--primary-grey);
+  margin-bottom: 16px;
+}
+
+.total {
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+  align-items: end;
+}
+
+.book-fee {
+  font-size: 12px;
+  color: var(--primary-grey);
+}
+
+.total-plus-fee {
+  display: inline-block;
+  border-bottom: 2px solid var(--primary-green);
+  width: 150px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
