@@ -1,1 +1,2 @@
-<label {{ $attributes->merge(['class' => 'text-grey']) }}>{{ $slot }}</label>
+@props(['label'])
+<label {{ $attributes->merge(['class' => 'text-grey']) }}>{{ $label }}</label>

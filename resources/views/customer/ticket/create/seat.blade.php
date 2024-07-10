@@ -16,7 +16,7 @@
                         <x-customer.ticket-label label="Tickets Reserved:" title="8 Tickets" />
                         <x-customer.ticket-label label="Total Cost:" title="₱ 4000.00" />
                     </div>
-                    <p class="mt-auto text-grey italic border-0 border-green border-b max-w-fit">*Please ensure that you
+                    <p class="mt-auto text-grey italic border-0 border-grey border-b max-w-fit">*Please ensure that you
                         are selecting seats of your choice</p>
                 </div>
             </section>

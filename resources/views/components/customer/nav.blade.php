@@ -7,7 +7,7 @@
         </a>
 
         <section class="flex justify-center items-center gap-8 flex-1">
-            <x-form.input class="min-w-[500px] pl-4 border-transparent" type="text" name="search"
+            <x-form.input class="min-w-[500px] pl-4 border-transparent" name="search"
                 placeholder="Search for movies..." />
             <button class="bg-green w-12 h-12 rounded-md hover:bg-transparent border border-transparent hover:border-white ">
                 <img class="mx-auto" src="{{ Vite::asset('resources/icons/search.png') }}" alt="">
