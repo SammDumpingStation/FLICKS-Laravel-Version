@@ -11,7 +11,7 @@
 
         <section class="flex flex-col gap-10">
             <div>
-                <x-form.input id="id_number" type="text" name="id_number" placeholder="Identification Number">
+                <x-form.input state="with-icon" id="id_number" name="id_number" placeholder="Identification Number">
                     <label for="id_number">
                         <img src="{{ Vite::asset('/resources/icons/id.png') }}"
                             class="h-6 w-6 absolute z-10 left-4 top-3.5 cursor-pointer" alt="">
@@ -26,10 +26,10 @@
             </div>
 
 
-            <x-button.wide-container>
+            <x-button.container type="wide">
                 <x-button.buttons color="transparent" tag="a" href="/auth">Cancel</x-button.buttons>
                 <x-button.buttons type="wide"> Continue</x-button.buttons>
-            </x-button.wide-container>
+            </x-button.container>
             <a href="/not-member" class="text-center -mt-4 text-white hover:text-green">Not a member?</a>
         </section>
         </section>

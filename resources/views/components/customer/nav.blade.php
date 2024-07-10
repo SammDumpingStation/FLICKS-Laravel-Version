@@ -6,9 +6,9 @@
             <h1 class="text-4xl font-bold tracking-[0.7rem]">FLICKS</h1>
         </a>
 
-        <section class="flex gap-x-8 flex-1 h-14 ">
-            <x-form.input type="navbar" placeholder="Search for movies..." />
-            <button class="bg-green w-12 h-full rounded-md hover:bg-transparent border border-transparent hover:border-white ">
+        <section class="flex gap-x-8 flex-1 h-14">
+            <input class="h-full bg-black px-4 w-full rounded-md min-w-[500px]" placeholder="Search for movies..." />
+            <button class="bg-green w-14 h-full rounded-md hover:bg-transparent border border-transparent hover:border-white ">
                 <img class="mx-auto" src="{{ Vite::asset('resources/icons/search.png') }}" alt="">
             </button>
         </section>

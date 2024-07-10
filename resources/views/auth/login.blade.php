@@ -8,8 +8,8 @@
 
         <x-auth.head-title title="Welcome!" description="Log in to get discounts when using FLICKS!" />
 
-        <section class="flex flex-col gap-5">
-            <x-form.input id="email" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+        <section class="flex flex-col gap-2">
+            <x-form.input id="email" state="with-icon" name="email" placeholder="Email" value="{{ old('email') }}">
                 <x-slot:for>
                     username
                 </x-slot:for>
@@ -21,7 +21,7 @@
             @error('email')
                 <p class="-mt-4 text-red italic">{{ $message }}</p>
             @enderror
-            <x-form.input id="password" type="password" name="password" placeholder="Password">
+            <x-form.input id="password" type="password" state="with-icon" name="password" placeholder="Password">
                 <label for="password">
                     <img src="{{ Vite::asset('resources/icons/padlock.png') }}"
                         class="h-6 w-6 absolute left-4 top-3 cursor-pointer z-10" alt="">

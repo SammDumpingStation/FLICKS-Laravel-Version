@@ -24,9 +24,9 @@
                 <p class=" text-red italic">{{ session('error') }}</p>
             @endif
         </div>
-        <x-button.wide-container>
+        <x-button.container type="wide">
             <x-button.buttons tag="a" color="transparent" href="/">Cancel</x-button.buttons>
             <x-button.buttons type="wide"> Continue</x-button.buttons>
-        </x-button.wide-container>
+        </x-button.container>
     </form>
 </x-auth.layout>

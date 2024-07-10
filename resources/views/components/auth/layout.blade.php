@@ -11,7 +11,7 @@
 </head>
 
 <body class="min-h-[100vh] px-[150px] py-[15vh] bg-black text-white flex justify-center items-center relative">
-    <x-auth.nav></x-auth.nav>
+    <x-auth.nav/>
     {{ $slot }}
 </body>
 

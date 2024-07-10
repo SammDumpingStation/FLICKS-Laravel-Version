@@ -23,12 +23,12 @@
 
             <div class="max-w-[800px]">
                 <h2 class="text-4xl font-bold mb-12">Personal Details</h2>
-                <x-form.container class="ml-16">
+                <div class="space-y-4 ml-16">
                     <x-form.input label="First Name" />
                     <x-form.input label="Last Name" />
                     <x-form.input label="Email" />
                     <x-form.input label="Phone Number" type="number" />
-                </x-form.container>
+                </div>
             </div>
 
             <div class="max-w-[800px]">
@@ -46,14 +46,12 @@
 
                     <div class="flex flex-col gap-4">
                         <h3 class="text-green text-xl pb-2">Unavailable Methods</h3>
-                        <label for="gcash"
-                            class="flex border-0 border-green border-b py-2 justify-between relative">
+                        <label for="gcash" class="flex border-0 border-green border-b py-2 justify-between relative">
                             <hr class="w-full absolute top-1/2">
                             <label for="gcash" class="text-2xl text-grey">Gcash</label>
                             <x-button.radio type="disable" id="gcash" disabled />
                         </label>
-                        <label for="card"
-                            class="flex border-0 border-green border-b py-2 justify-between relative">
+                        <label for="card" class="flex border-0 border-green border-b py-2 justify-between relative">
                             <hr class="w-full absolute top-1/2">
                             <label for="card" class="text-2xl text-grey">Credit/Debit Cards</label>
                             <x-button.radio type="disable" id="card" disabled />
@@ -62,10 +60,10 @@
                 </section>
             </div>
 
-                <x-button.container>
-                    <x-button.buttons color="red" tag="a" href="/create/cancel">Cancel</x-button.buttons>
-                    <x-button.buttons tag="a" href="/create/success">Confirm</x-button.buttons>
-                </x-button.container>
+            <x-button.container>
+                <x-button.buttons color="red" tag="a" href="/create/cancel">Cancel</x-button.buttons>
+                <x-button.buttons tag="a" href="/create/success">Confirm</x-button.buttons>
+            </x-button.container>
         </form>
     </x-customer.ticket-layout>
 </x-customer.layout>

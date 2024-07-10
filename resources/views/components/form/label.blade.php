@@ -1,2 +1,2 @@
 @props(['label'])
-<label {{ $attributes->merge(['class' => 'text-grey']) }}>{{ $label }}</label>
+<label class = 'text-grey'>{{ $label }}</label>
