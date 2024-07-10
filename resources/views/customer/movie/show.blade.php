@@ -55,7 +55,7 @@
             </section>
         </div>
 
-        <x-button.container class="mt-24 ">
+        <x-button.container>
             <x-button.buttons color="red" tag='a' href="/">Cancel</x-button.buttons>
             <x-button.buttons color="green" tag='a' href="/create/book">Reserve Now</x-button.buttons>
         </x-button.container>

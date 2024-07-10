@@ -11,7 +11,7 @@
 </head>
 
 <body class="min-h-[100vh] p-[150px] bg-black text-white flex justify-center relative">
-    <x-customer.nav></x-customer.nav>
+    <x-customer.nav/>
     {{ $slot }}
 </body>
 
