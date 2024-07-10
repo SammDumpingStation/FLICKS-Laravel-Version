@@ -41,9 +41,16 @@ Route::post('/register', [RegisteredUsersController::class, 'store']);
 
 //Home Page -> User
 //Flicks Main Page
-Route::view('/', 'customer.movies.index');
+Route::view('/', 'customer.movie.index');
 
 //Individual Movie
-Route::view('/movies', 'customer.movies.show');
+Route::view('/movies', 'customer.movie.show');
+
+//Create or Book a ticket
+//Whole create resource split into 4 forms
+Route::view('/create/book', 'customer.ticket.create.book');
+Route::view('/create/seat', 'customer.ticket.create.seat');
+Route::view('/create/confirm', 'customer.ticket.create.confirm');
+Route::view('/create/success', 'customer.ticket.create.success');
 
 //Home Page -> Admin

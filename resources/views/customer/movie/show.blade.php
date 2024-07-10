@@ -56,8 +56,8 @@
         </div>
 
         <x-button.container class="mt-24 ">
-            <x-button.buttons color="red" tag='a'>Cancel</x-button.buttons>
-            <x-button.buttons>Reserve Now</x-button.buttons>
+            <x-button.buttons color="red" tag='a' href="/">Cancel</x-button.buttons>
+            <x-button.buttons color="green" tag='a' href="/create/book">Reserve Now</x-button.buttons>
         </x-button.container>
     </main>
 </x-customer.layout>
