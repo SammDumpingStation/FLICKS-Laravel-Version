@@ -16,5 +16,7 @@ class Movie extends Model
         'display',
         'length',
         'rating_score',
+        'rating_score',
+        'status_id'
     ];
 }

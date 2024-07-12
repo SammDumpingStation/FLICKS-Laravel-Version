@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\SessionController;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 //Note to Self: Follow this naming convention in creating routes:
@@ -41,7 +40,7 @@ Route::post('/register', [RegisteredUsersController::class, 'store']);
 
 //Home Page -> User
 //Flicks Main Page
-Route::view('/', 'customer.movie.index');
+Route::get('/', [MovieController::class, 'index']);
 
 //Individual Movie
 Route::view('/movies', 'customer.movie.show');

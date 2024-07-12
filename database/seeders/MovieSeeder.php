@@ -113,6 +113,21 @@ class MovieSeeder extends Seeder
             8.00,
         ];
 
+        $status_id =[
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3
+        ];
+
         foreach ($movies as $key => $movie) {
             Movie::create([
                 'title' => $movie,
@@ -121,7 +136,8 @@ class MovieSeeder extends Seeder
                 'age_rating' => $age_rating[$key], // Ensure your array name matches
                 'display' => $displays[$key],
                 'length' => $lengths[$key],
-                'rating_score' => $rating_score[$key], // Ensure your array name matches
+                'rating_score' => $rating_score[$key],
+                'status_id' => $status_id[$key]// Ensure your array name matches
             ]);
         }
 
