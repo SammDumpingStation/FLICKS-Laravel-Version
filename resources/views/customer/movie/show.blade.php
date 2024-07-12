@@ -54,7 +54,7 @@
             @if ($movie === 1)
                 <x-button.buttons color="green" tag='a' href="/">Confirm</x-button.buttons>
             @else
-                <x-button.buttons color="green" tag='a' href="/create/{{ $movie->id }}">Reserve Now</x-button.buttons>
+                <x-button.buttons color="green" tag='a' href="/create/book/{{ $movie->id }}">Reserve Now</x-button.buttons>
             @endif
         </x-button.container>
     </main>

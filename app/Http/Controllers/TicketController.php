@@ -19,24 +19,17 @@ class TicketController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Movie $movie)
+    public function create($type, Movie $movie)
     {
-        return view('customer.ticket.create.book', ['movie' => $movie]);
-    }
+        $view = match ($type) {
+            'book' => 'customer.ticket.create.book',
+            'seat' => 'customer.ticket.create.seat',
+            'confirm' => 'customer.ticket.create.confirm',
+            'success' => 'customer.ticket.create.success',
+            default => abort(404), // or some default view
+        };
 
-    public function createSeat(Movie $movie)
-    {
-        return view('customer.ticket.create.seat', ['movie' => $movie]);
-    }
-
-        public function createConfirm(Movie $movie)
-    {
-        return view('customer.ticket.create.confirm', ['movie' => $movie]);
-    }
-
-        public function createSuccess(Movie $movie)
-    {
-        return view('customer.ticket.create.success', ['movie' => $movie]);
+        return view($view, ['movie' => $movie]);
     }
 
     /**
