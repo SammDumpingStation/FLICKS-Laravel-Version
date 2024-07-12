@@ -13,129 +13,20 @@
         </section>
 
         <section class="gap-24 flex flex-col">
-            <section class="">
-                <h2 class="font-bold text-4xl">Now Showing</h2>
-                <div class="flex flex-wrap mt-8 justify-between">
-                    <a href="/movies"
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C1</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C2</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C3</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C4</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga</h2>
-                    </a>
-                </div>
-            </section>
+            <x-customer.movie-group title="Now Showing">
+                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" state="now-showing" />
+            </x-customer.movie-group>
 
+            <x-customer.movie-group title="Next Picture">
+                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" />
+            </x-customer.movie-group>
 
-            <section class="">
-                <h2 class="font-bold text-4xl">Next Picuture</h2>
-                <div class="flex flex-wrap mt-8 justify-between">
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C1</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga
-                        </h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C2</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga
-                        </h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C3</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga
-                        </h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C4</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max Saga
-                        </h2>
-                    </a>
-                </div>
-            </section>
-
-
-            <section class="">
-                <h2 class="font-bold text-4xl">Coming Soon</h2>
-                <div class="flex flex-wrap mt-8 justify-between">
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C1</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max
-                            Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C2</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max
-                            Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C3</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max
-                            Saga</h2>
-                    </a>
-                    <a href=""
-                        class="flex flex-col max-w-fit justify-center basis-full items-center gap-4">
-                        <h1 class="font-bold text-4xl">C4</h1>
-                        <div class="h-72 w-52 border border-red">
-                            <img class="w-full h-full object-cover" src="" alt="Poster">
-                        </div>
-                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">Furiosa the Mad Max
-                            Saga</h2>
-                    </a>
-                </div>
-            </section>
+            <x-customer.movie-group title="Coming Soon">
+                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" />
+            </x-customer.movie-group>
         </section>
     </main>
 </x-customer.layout>
