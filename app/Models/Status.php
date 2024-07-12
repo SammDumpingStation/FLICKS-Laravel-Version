@@ -11,4 +11,8 @@ class Status extends Model
     protected $fillable = [
         'status'
     ];
+
+    public function movie () {
+        return $this->hasMany(Movie::class);
+    }
 }

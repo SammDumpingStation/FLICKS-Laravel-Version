@@ -14,18 +14,50 @@
 
         <section class="gap-24 flex flex-col">
             <x-customer.movie-group title="Now Showing">
-                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
-                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" state="now-showing" />
+                @foreach ($nowShowing as $key => $movie)
+                    <a href="/movies" class="flex flex-col max-w-fit justify-center basis-full items-center gap-4 ml-8">
+                        <h1 class="font-bold text-4xl">C{{ $key + 1 }}</h1>
+                        <div class="h-72 w-52 border border-red">
+                            <img class="w-full h-full object-cover" src="{{ Vite::asset($movie->poster_link) }}"
+                                alt="Poster">
+                        </div>
+                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">{{ $movie->title }}
+                        </h2>
+                    </a>
+                @endforeach
+                {{-- <x-customer.movie-row movie="{{ $movies }}" title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" state="now-showing" /> --}}
             </x-customer.movie-group>
 
             <x-customer.movie-group title="Next Picture">
-                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
-                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" />
+                @foreach ($nextPicture as $key => $movie)
+                    <a href="/movies" class="flex flex-col max-w-fit justify-center basis-full items-center gap-4 ml-8">
+                        <div class="h-72 w-52 border border-red">
+                            <img class="w-full h-full object-cover" src="{{ Vite::asset($movie->poster_link) }}"
+                                alt="Poster">
+                        </div>
+                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">{{ $movie->title }}
+                        </h2>
+                    </a>
+                @endforeach
+
+                {{-- <x-customer.movie-row title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" /> --}}
             </x-customer.movie-group>
 
             <x-customer.movie-group title="Coming Soon">
-                <x-customer.movie-row title="Furiosa: A Mad Max Saga"
-                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" />
+                @foreach ($comingSoon as $key => $movie)
+                    <a href="/movies" class="flex flex-col max-w-fit justify-center basis-full items-center gap-4 ml-8">
+                        <div class="h-72 w-52 border border-red">
+                            <img class="w-full h-full object-cover" src="{{ Vite::asset($movie->poster_link) }}"
+                                alt="Poster">
+                        </div>
+                        <h2 class="mt-4 max-w-[12ch] text-xl text-center min-h-[100px]  ">{{ $movie->title }}
+                        </h2>
+                    </a>
+                @endforeach
+                {{-- <x-customer.movie-row title="Furiosa: A Mad Max Saga"
+                    poster="{{ Vite::asset('resources/images/Furiosa.webp') }}" /> --}}
             </x-customer.movie-group>
         </section>
     </main>

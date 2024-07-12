@@ -19,4 +19,8 @@ class Movie extends Model
         'rating_score',
         'status_id'
     ];
+
+    public function status() {
+        return $this->belongsTo(Status::class);
+    }
 }

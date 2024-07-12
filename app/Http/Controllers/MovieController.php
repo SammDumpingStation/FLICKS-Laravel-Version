@@ -12,7 +12,26 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('customer.movie.index');
+        $nowShowing = Movie::select('id', 'title', 'poster_link', 'status_id')
+            ->whereHas('status', function ($query) {
+                $query->where('status', 'now-showing');
+            })->get();
+
+        $nextPicture = Movie::select('id', 'title', 'poster_link', 'status_id')
+            ->whereHas('status', function ($query) {
+                $query->where('status', 'next-picture');
+            })->get();
+
+        $comingSoon = Movie::select('id', 'title', 'poster_link', 'status_id')
+            ->whereHas('status', function ($query) {
+                $query->where('status', 'coming-soon');
+            })->get();
+
+        return view('customer.movie.index', [
+            'nowShowing' => $nowShowing,
+            'nextPicture' => $nextPicture,
+            'comingSoon' => $comingSoon
+        ]);
     }
 
     /**
