@@ -3,7 +3,7 @@
         Booked Successfully
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav />
+        <x-customer.ticket-nav :id="$movie->id" />
         <section class="flex gap-14">
             <div class="basis-full flex justify-center flex-col gap-4">
                 <div class="max-w-[72px]">

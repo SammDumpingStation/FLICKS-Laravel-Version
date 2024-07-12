@@ -30,7 +30,7 @@ class MovieController extends Controller
         return view('customer.movie.index', [
             'nowShowing' => $nowShowing,
             'nextPicture' => $nextPicture,
-            'comingSoon' => $comingSoon
+            'comingSoon' => $comingSoon,
         ]);
     }
 
@@ -55,7 +55,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        return view('customer.movie.show', ['movie' => $movie]);
     }
 
     /**

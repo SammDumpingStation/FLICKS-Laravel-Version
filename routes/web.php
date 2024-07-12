@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\MovieController;
-use App\Http\Controllers\RegisteredUsersController;
-use App\Http\Controllers\SessionController;
+use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\RegisteredUsersController;
+use App\Http\Controllers\TicketController;
 
 //Note to Self: Follow this naming convention in creating routes:
 // index: Display a listing of the resource. -> Ex. All Movie
@@ -43,13 +45,13 @@ Route::post('/register', [RegisteredUsersController::class, 'store']);
 Route::get('/', [MovieController::class, 'index']);
 
 //Individual Movie
-Route::view('/movies', 'customer.movie.show');
+Route::get('/movies/{movie}', [MovieController::class, 'show']);
 
 //Create or Book a ticket
 //Whole create resource split into 4 forms
-Route::view('/create/book', 'customer.ticket.create.book');
-Route::view('/create/seat', 'customer.ticket.create.seat');
-Route::view('/create/confirm', 'customer.ticket.create.confirm');
-Route::view('/create/success', 'customer.ticket.create.success');
+Route::get('/create/{movie}', [TicketController::class, 'create']);
+Route::get('/create/seat/{movie}', [TicketController::class, 'createSeat']);
+Route::get('/create/confirm/{movie}', [TicketController::class, 'createConfirm']);
+Route::get('/create/success/{movie}', [TicketController::class, 'createSuccess']);
 
 //Home Page -> Admin

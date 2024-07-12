@@ -3,7 +3,7 @@
         Select Seats
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav />
+        <x-customer.ticket-nav :id="$movie->id" />
         <form class="flex flex-col gap-14">
             <section class="flex gap-14">
                 <x-customer.ticket-poster :src="Vite::asset('resources/images/Furiosa.webp')" alt="" />
