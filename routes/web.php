@@ -4,7 +4,10 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TicketController;
+use App\Models\Movie;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 //Note to Self: Follow this naming convention in creating routes:
 // index: Display a listing of the resource. -> Ex. All Movie
@@ -48,7 +51,12 @@ Route::get('/movies/{movie}', [MovieController::class, 'show']);
 
 //Create or Book a ticket
 //Whole create resource split into 4 forms
-Route::get('/create/{type}/{movie}', [TicketController::class, 'create'])
-    ->where('type', 'book|seat|confirm|success');
+Route::get('/movies/{movie}/book', [TicketController::class, 'create']);
+Route::get('/movies/{movie}/seat', [TicketController::class, 'selectSeats']);
+Route::get('/movies/{movie}/booking/confirm', [TicketController::class, 'bookingConfirm']);
+Route::get('/movies/{movie}/booking/success', [TicketController::class, 'bookingSuccess']);
+
+Route::post('/movies/{movie}/book', [TicketController::class, 'storeTicket']);
+Route::post('/movies/{movie}/seat', [TicketController::class, 'storeSeat']);
 
 //Home Page -> Admin

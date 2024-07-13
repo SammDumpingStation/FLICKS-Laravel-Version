@@ -3,28 +3,39 @@
         Book Ticket
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav :id="$movie->id" />
-        <form class="flex gap-12">
+        <x-customer.ticket-nav :id="$ticketInfo['id']" />
+        <form action="/movies/{{ $ticketInfo['id'] }}/book" method="POST" class="flex gap-12">
+            @csrf
             <div class="max-w-[350px] max-h-[500px] h-full w-full">
-                <img class="w-full h-full object-cover " src="{{ Vite::asset($movie->poster_link) }}" alt="">
+                <img class="w-full h-full object-cover " src="{{ Vite::asset($ticketInfo['poster-link']) }}"
+                    alt="">
             </div>
 
             <div class="flex flex-col w-full gap-4">
-                <h1 class="font-bold text-5xl">{{ $movie->title }}</h1>
+                <h1 class="font-bold text-5xl">{{ $ticketInfo['title'] }}</h1>
                 <h1 class="font-bold text-[40px] text-green ml-6">₱400</h1>
                 <section class="ml-6 flex flex-col gap-12 ">
                     <section>
                         <h2 class="text-2xl font-bold">Select Time Slot</h2>
                         <div class="flex flex-col ml-8 gap-4">
                             <h3 class="italic text-grey mb-2">Select the time slot you wish to watch.</h3>
-                            <select name=""
-                                class="max-w-[400px] h-10  bg-transparent border border-green rounded-xl text-center items-center"
-                                id="">
-                                <option value="none">Choose a Time Slot</option>
-                                <option value="">12:30</option>
-                                <option value="">3:30</option>
-                                <option value="">5:30</option>
+                            <select name="time-slot"
+                                class="max-w-[400px] h-10 bg-transparent border border-green rounded-md text-center items-center">
+                                <option value="">Choose a Time Slot</option>
+                                <option value="12:30 P.M."
+                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '12:30 P.M.' ? 'selected' : '' }}>
+                                    12:30 P.M.</option>
+                                <option value="3:30 P.M."
+                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '3:30 P.M.' ? 'selected' : '' }}>
+                                    3:30 P.M.</option>
+                                <option value="5:30 P.M."
+                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '5:30 P.M.' ? 'selected' : '' }}>
+                                    5:30 P.M.</option>
                             </select>
+
+                            @error('time-slot')
+                                <p class="-mt-4 text-red italic">{{ $message }}</p>
+                            @enderror
                             <p class="">You have selected: <span class="white">None</span></p>
                         </div>
                     </section>
@@ -39,12 +50,15 @@
                                 <div class="flex ml-4 border h-16 border-green rounded-md max-w-fit">
                                     <h6 class="text-2xl font-bold px-8 flex items-center hover:bg-green cursor-pointer">
                                         -</h6>
-                                    <input type="text"
+                                    <input type="text" value="{{ $ticketInfo['quantity'] }}"
                                         class="bg-transparent text-center max-w-20 border-0 border-green border-x"
-                                        name="quantity" value="">
+                                        name="quantity">
                                     <h6 class="text-2xl font-bold px-8 flex items-center hover:bg-green cursor-pointer">
                                         +</h6>
                                 </div>
+                                @error('quantity')
+                                    <p class="-mt-4 text-red italic">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="ml-6 space-y-5">
@@ -58,7 +72,7 @@
 
                 <x-button.container>
                     <x-button.buttons color="red" tag="a" href='/'>Cancel</x-button.buttons>
-                    <x-button.buttons tag="a" href='/create/seat'>Continue</x-button.buttons>
+                    <x-button.buttons>Continue</x-button.buttons>
                 </x-button.container>
             </div>
         </form>

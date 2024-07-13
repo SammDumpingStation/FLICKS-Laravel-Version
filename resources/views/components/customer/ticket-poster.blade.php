@@ -1,6 +1,6 @@
 @props(['src', 'alt' => 'wwww'])
 
-<div class="max-w-[200px] max-h-[300px] h-full w-full">
+<div class="w-[350px] h-[350px] max-w-[350px] max-h-[350px]">
     <img class="w-full h-full object-cover" src="{{ $src }}"
         alt="{{ $alt }}">
 </div>

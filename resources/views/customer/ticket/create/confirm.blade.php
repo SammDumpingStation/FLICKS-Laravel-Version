@@ -3,7 +3,7 @@
         Ticket Confirmation
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav :id="$movie->id" />
+        <x-customer.ticket-nav :id="$movie->id" form=""/>
         <form class="flex flex-col gap-14">
             <section class="flex gap-14">
                 <x-customer.ticket-poster :src="Vite::asset('resources/images/Furiosa.webp')" alt="" />

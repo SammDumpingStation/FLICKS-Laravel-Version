@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MovieController extends Controller
 {
@@ -12,6 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
+        Session::flush();
         $nowShowing = Movie::select('id', 'title', 'poster_link', 'status_id')
             ->whereHas('status', function ($query) {
                 $query->where('status', 'now-showing');
