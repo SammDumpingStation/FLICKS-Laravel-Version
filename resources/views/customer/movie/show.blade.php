@@ -10,7 +10,7 @@
                         alt="">
                 </div>
                 @if ($movie->status_id === 1)
-                    <h2 class="text-2xl mt-4">Cinema {{ $movie->id }}</h2>
+                    <h2 class="text-2xl mt-4">Cinema {{ $movie->cinema->number }}</h2>
                 @endif
 
             </section>

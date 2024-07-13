@@ -15,19 +15,13 @@ class MovieController extends Controller
     {
         Session::flush();
         $nowShowing = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->whereHas('status', function ($query) {
-                $query->where('status', 'now-showing');
-            })->get();
+            ->where('status_id', '1')->with('cinema')->get();
 
         $nextPicture = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->whereHas('status', function ($query) {
-                $query->where('status', 'next-picture');
-            })->get();
+            ->where('status_id', '2')->get();
 
         $comingSoon = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->whereHas('status', function ($query) {
-                $query->where('status', 'coming-soon');
-            })->get();
+            ->where('status_id', '3')->get();
 
         return view('customer.movie.index', [
             'nowShowing' => $nowShowing,
@@ -57,7 +51,8 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('customer.movie.show', ['movie' => $movie]);
+        $movieCinema = Movie::with('cinema')->find($movie->id);
+        return view('customer.movie.show', ['movie' => $movieCinema]);
     }
 
     /**
