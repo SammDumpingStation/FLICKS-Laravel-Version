@@ -51,7 +51,7 @@
 
         <x-button.container>
             <x-button.buttons color="red" tag='a' href="/">Cancel</x-button.buttons>
-            @if ($movie === 1)
+            @if ($movie->status_id != 1)
                 <x-button.buttons color="green" tag='a' href="/">Confirm</x-button.buttons>
             @else
                 <x-button.buttons color="green" tag='a' href="/movies/{{ $movie->id }}/book">Reserve Now</x-button.buttons>

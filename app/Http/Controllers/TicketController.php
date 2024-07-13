@@ -29,7 +29,7 @@ class TicketController extends Controller
             'time-slot' => Session::get('ticket_selection.time-slot', null),
             'quantity' => Session::get('ticket_selection.quantity', null),
             'total-cost' => Session::get('ticket_selection.total-cost', null),
-            'cinema-number' => $movie->id, 
+            'cinema-number' => $movie->id,
             'seats-selected' => Session::get('ticket_selection.seats-selected', null),
         ]);
 
@@ -45,7 +45,7 @@ class TicketController extends Controller
             'quantity' => 'required',
         ]);
 
-        $totalCost = 400 * $validated['quantity'];
+        $totalCost = 400.00 * $validated['quantity'];
         $ticketInfo = Session::get('ticket_selection');
         $movieID = $ticketInfo['id'];
 
@@ -63,9 +63,20 @@ class TicketController extends Controller
         return view('customer.ticket.create.seat', ['ticketInfo' => $ticketInfo]);
     }
 
+    public function storeSeat()
+    {
+        $ticketInfo = Session::get('ticket_selection');
+        $movieID = $ticketInfo['id'];
+        Session::put('ticket_selection.seats-selected', ['a1', 'a2', 'a3', 'a4']);
+        return redirect('/movies/' . $movieID . '/booking/confirm');
+    }
+
     public function bookingConfirm()
     {
-
+        $ticketInfo = Session::get('ticket_selection');
+        $seatsArray = $ticketInfo['seats-selected'];
+        $string = ucwords(implode(', ', $seatsArray));
+        return view('customer.ticket.create.confirm', ['ticketInfo' => $ticketInfo, 'seatSelected' => $string]);
     }
 
     public function bookingSuccess()

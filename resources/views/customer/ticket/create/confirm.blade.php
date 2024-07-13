@@ -3,19 +3,21 @@
         Ticket Confirmation
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav :id="$movie->id" form=""/>
+        <x-customer.ticket-nav :id="$ticketInfo['id']"/>
         <form class="flex flex-col gap-14">
+            @csrf
             <section class="flex gap-14">
-                <x-customer.ticket-poster :src="Vite::asset('resources/images/Furiosa.webp')" alt="" />
+                <x-customer.ticket-poster :src="Vite::asset($ticketInfo['poster-link'])" alt="" />
 
                 <div class="flex flex-col w-full">
                     <div class="w-full flex flex-col gap-4">
-                        <x-customer.ticket-label label="Movie Title:" title="Furiosa: A Mad Max Saga" />
-                        <x-customer.ticket-label label="Time Slot:" title="12:30 P.M." />
+                        <x-customer.ticket-label label="Movie Title:" title="{{ $ticketInfo['title'] }}" />
+                        <x-customer.ticket-label label="Time Slot:" title="{{ $ticketInfo['time-slot'] }}" />
                         <x-customer.ticket-label label="Screen Location:" title="Cinema 1" />
-                        <x-customer.ticket-label label="Tickets Reserved:" title="8 Tickets" />
-                        <x-customer.ticket-label label="Total Cost:" title="₱ 4000.00" />
-                        <x-customer.ticket-label label="Seats Selected:" title="A1, A2, A3, A4, A5" />
+                        <x-customer.ticket-label label="Tickets Reserved:"
+                            title="{{ $ticketInfo['quantity'] }} Tickets" />
+                        <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticketInfo['total-cost'] }}" />
+                        <x-customer.ticket-label label="Seats Selected:" title="{{ $seatSelected }}" />
                     </div>
                 </div>
             </section>
@@ -27,7 +29,7 @@
                     <x-form.input label="First Name" />
                     <x-form.input label="Last Name" />
                     <x-form.input label="Email" />
-                    <x-form.input label="Phone Number" type="number" />
+                    <x-form.input label="Phone Number"/>
                 </div>
             </div>
 
