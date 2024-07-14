@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Status;
+use App\Models\MovieStatus;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('display');
             $table->integer('length');
             $table->integer('rating_score');
-            $table->foreignIdFor(Status::class);
+            $table->foreignIdFor(MovieStatus::class);
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             MovieSeeder::class,
-            StatusSeeder::class,
+            MovieStatusSeeder::class,
             CinemaSeeder::class,
             // Add more seeders as needed
         ]);

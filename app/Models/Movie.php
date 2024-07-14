@@ -21,7 +21,7 @@ class Movie extends Model
     ];
 
     public function status() {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(MovieStatus::class);
     }
     public function cinema() {
         return $this->hasOne(Cinema::class);
