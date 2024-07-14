@@ -51,12 +51,12 @@ Route::get('/movies/{movie}', [MovieController::class, 'show']);
 
 //Create or Book a ticket
 //Whole create resource split into 4 forms
-Route::get('/movies/{movie}/book', [TicketController::class, 'create']);
-Route::get('/movies/{movie}/seat', [TicketController::class, 'selectSeats']);
+Route::get('/movies/{movie}/book', [TicketController::class, 'createBooking']);
+Route::get('/movies/{movie}/seat', [TicketController::class, 'createSeats']);
 Route::get('/movies/{movie}/booking/confirm', [TicketController::class, 'bookingConfirm']);
 Route::get('/movies/{movie}/booking/success', [TicketController::class, 'bookingSuccess']);
 
-Route::post('/movies/{movie}/book', [TicketController::class, 'storeTicket']);
-Route::post('/movies/{movie}/seat', [TicketController::class, 'storeSeat']);
-
+Route::post('/movies/{movie}/book', [TicketController::class, 'storeBooking']);
+Route::post('/movies/{movie}/seat', [TicketController::class, 'storeSeats']);
+Route::post('/movies/{movie}/booking/confirm', [TicketController::class, 'storeTicket']);
 //Home Page -> Admin

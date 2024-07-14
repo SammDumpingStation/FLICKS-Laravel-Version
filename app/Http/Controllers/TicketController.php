@@ -20,7 +20,7 @@ class TicketController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Movie $movie)
+    public function createBooking(Movie $movie)
     {
         Session::put('ticket_selection', [
             'id' => $movie->id,
@@ -38,7 +38,7 @@ class TicketController extends Controller
         return view('customer.ticket.create.book', ['ticketInfo' => $ticketInfo]);
     }
 
-    public function storeTicket(Request $request)
+    public function storeBooking(Request $request)
     {
         $validated = $request->validate([
             'time-slot' => 'required',
@@ -56,14 +56,14 @@ class TicketController extends Controller
         return redirect('/movies/' . $movieID . '/seat');
     }
 
-    public function selectSeats()
+    public function createSeats()
     {
         $ticketInfo = Session::get('ticket_selection');
 
         return view('customer.ticket.create.seat', ['ticketInfo' => $ticketInfo]);
     }
 
-    public function storeSeat()
+    public function storeSeats()
     {
         $ticketInfo = Session::get('ticket_selection');
         $movieID = $ticketInfo['id'];
@@ -77,6 +77,18 @@ class TicketController extends Controller
         $seatsArray = $ticketInfo['seats-selected'];
         $string = ucwords(implode(', ', $seatsArray));
         return view('customer.ticket.create.confirm', ['ticketInfo' => $ticketInfo, 'seatSelected' => $string]);
+    }
+
+    public function storeTicket(Request $request)
+    {
+        $request->validate([
+            'first-name' => ['required'],
+            'last-name' => ['required'],
+            'email' => ['required'],
+            'phone-number' => ['required'],
+        ]);
+        $ticketInfo = Session::get('ticket_selection');
+        dd($ticketInfo);
     }
 
     public function bookingSuccess()
