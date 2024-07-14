@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\MovieStatus;
+use App\Models\SeatStatus;
 use Illuminate\Database\Seeder;
 
-class MovieStatusSeeder extends Seeder
+class SeatStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,23 +14,21 @@ class MovieStatusSeeder extends Seeder
     {
         $status = [
             [
-                'status' => 'now-showing',
+                'status' => 'available',
             ],
             [
-                'status' => 'next-picture',
+                'status' => 'not-available',
             ],
             [
-                'status' => 'coming-soon',
+                'status' => 'reserved',
             ],
             [
-                'status' => 'upcoming',
-            ],
-            [
-                'status' => 'stashed',
+                'status' => 'paid',
             ],
         ];
         foreach ($status as $index) {
-            MovieStatus::create($index);
+            SeatStatus::create($index);
         }
+
     }
 }

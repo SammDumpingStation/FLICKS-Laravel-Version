@@ -5,15 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MovieStatus extends Model
+class SeatStatus extends Model
 {
     use HasFactory;
     protected $fillable = [
         'status',
     ];
-
-    public function movie()
-    {
-        return $this->hasMany(Movie::class);
-    }
 }
