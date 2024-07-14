@@ -137,7 +137,7 @@ class MovieSeeder extends Seeder
                 'display' => $displays[$key],
                 'length' => $lengths[$key],
                 'rating_score' => $rating_score[$key],
-                'status_id' => $status_id[$key]// Ensure your array name matches
+                'movie_status_id' => $status_id[$key]// Ensure your array name matches
             ]);
         }
 

@@ -17,7 +17,7 @@ class Movie extends Model
         'length',
         'rating_score',
         'rating_score',
-        'status_id'
+        'movie_status_id'
     ];
 
     public function status() {
