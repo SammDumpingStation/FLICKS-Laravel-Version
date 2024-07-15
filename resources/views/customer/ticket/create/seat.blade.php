@@ -25,15 +25,8 @@
 
             <section
                 class="w-[578px] px-4 mx-auto bg-secondary-grey py-4 rounded-lg flex flex-wrap gap-4 items-center justify-center">
-                @for ($i = 1; $i <= 120; $i++)
-                    @php
-                        $groupNumber = ceil($i / 10);
-                        $letter = chr(64 + $groupNumber);
-                        $label = $letter . $i;
-                    @endphp
-                    <button value="{{ $label }}"
-                        class="flex-1 basis-full max-w-[40px] h-40px] bg-white text-secondary-black hover:bg-green hover:text-white">{{ $label }}</button>
-                @endfor
+                <x-customer.seat-selection :seats="$seats" />
+                
             </section>
             <x-button.container>
                 <x-button.buttons color="red" tag="a"

@@ -13,10 +13,10 @@ class CinemaSeeder extends Seeder
     public function run(): void
     {
         $number = [
-            'Cinema 1',
-            'Cinema 2',
-            'Cinema 3',
-            'Cinema 4',
+            '1',
+            '2',
+            '3',
+            '4',
         ];
 
         $capacity = [

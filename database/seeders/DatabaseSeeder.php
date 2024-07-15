@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             CinemaSeeder::class,
             TimeSlotSeeder::class,
             SeatSeeder::class,
-            SeatStatusSeeder::class
+            SeatStatusSeeder::class,
+            BookingSeeder::class,
+            BookingSeatSeeder::class
             // Add more seeders as needed
         ]);
 

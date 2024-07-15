@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Seat;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -59,8 +60,9 @@ class TicketController extends Controller
     public function createSeats()
     {
         $ticketInfo = Session::get('ticket_selection');
+        $seats = Seat::all();
 
-        return view('customer.ticket.create.seat', ['ticketInfo' => $ticketInfo]);
+        return view('customer.ticket.create.seat', ['ticketInfo' => $ticketInfo, 'seats' => $seats]);
     }
 
     public function storeSeats()
@@ -116,7 +118,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show()
     {
         //
     }
@@ -124,7 +126,7 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ticket $ticket)
+    public function edit()
     {
         //
     }
@@ -132,7 +134,7 @@ class TicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(Request $request)
     {
         //
     }
@@ -140,7 +142,7 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ticket $ticket)
+    public function destroy()
     {
         //
     }
