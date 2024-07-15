@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
 use App\Models\Seat;
-use App\Models\Ticket;
+use App\Models\Movie;
+use App\Models\Cinema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -23,6 +23,10 @@ class TicketController extends Controller
      */
     public function createBooking(Movie $movie)
     {
+
+        $cinemaID = Movie::with('cinema')->find($movie->id)->cinema->number;
+        $ticketCost = Movie::with('cinema')->find($movie->id)->cinema->ticket_cost;
+        $timeSlots = Cinema::find($cinemaID)->timeSlot->pluck('time_start');
         Session::put('ticket_selection', [
             'id' => $movie->id,
             'title' => $movie->title,
@@ -30,13 +34,14 @@ class TicketController extends Controller
             'time-slot' => Session::get('ticket_selection.time-slot', null),
             'quantity' => Session::get('ticket_selection.quantity', null),
             'total-cost' => Session::get('ticket_selection.total-cost', null),
-            'cinema-number' => $movie->id,
+            'cinema-number' => $cinemaID,
             'seats-selected' => Session::get('ticket_selection.seats-selected', null),
+            'ticket-cost' => $ticketCost
         ]);
 
         $ticketInfo = Session::get('ticket_selection');
 
-        return view('customer.ticket.create.book', ['ticketInfo' => $ticketInfo]);
+        return view('customer.ticket.create.book', ['ticketInfo' => $ticketInfo, 'timeSlots' => $timeSlots]);
     }
 
     public function storeBooking(Request $request)
@@ -46,7 +51,7 @@ class TicketController extends Controller
             'quantity' => 'required',
         ]);
 
-        $totalCost = 400.00 * $validated['quantity'];
+        $totalCost = Session::get('ticket_selection.ticket-cost') * $validated['quantity'] + 40;
         $ticketInfo = Session::get('ticket_selection');
         $movieID = $ticketInfo['id'];
 

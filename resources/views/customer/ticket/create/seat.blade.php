@@ -12,8 +12,8 @@
                 <div class="flex flex-col w-full">
                     <div class="w-full flex flex-col gap-4">
                         <x-customer.ticket-label label="Movie Title:" title="{{ $ticketInfo['title'] }}" />
-                        <x-customer.ticket-label label="Time Slot:" title="{{ $ticketInfo['time-slot'] }}" />
-                        <x-customer.ticket-label label="Screen Location:" title="Cinema 1" />
+                        <x-customer.ticket-label label="Time Slot:" title="{{ $ticketInfo['time-slot'] }} P.M." />
+                        <x-customer.ticket-label label="Screen Location:" title="Cinema {{ $ticketInfo['cinema-number'] }}" />
                         <x-customer.ticket-label label="Tickets Reserved:"
                             title="{{ $ticketInfo['quantity'] }} Tickets" />
                         <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticketInfo['total-cost'] }}" />
@@ -25,8 +25,8 @@
 
             <section
                 class="w-[578px] px-4 mx-auto bg-secondary-grey py-4 rounded-lg flex flex-wrap gap-4 items-center justify-center">
-                <x-customer.seat-selection :seats="$seats" />
-                
+                <x-customer.seat-selection :seats="$seats" :cinemaID="$ticketInfo['id']" />
+
             </section>
             <x-button.container>
                 <x-button.buttons color="red" tag="a"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cinema;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -52,7 +53,12 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         $movieCinema = Movie::with('cinema')->find($movie->id);
-        return view('customer.movie.show', ['movie' => $movieCinema]);
+        $timeSlots = null;
+        $cinemaNumber = $movieCinema->cinema->number ?? null;
+        if ($cinemaNumber) {
+            $timeSlots = Cinema::find($movieCinema->cinema->number)->timeSlot->pluck('time_start');
+        }
+        return view('customer.movie.show', ['movie' => $movieCinema, 'timeSlot' => $timeSlots]);
     }
 
     /**

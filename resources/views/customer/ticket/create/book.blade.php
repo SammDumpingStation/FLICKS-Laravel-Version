@@ -9,11 +9,12 @@
             <div class="max-w-[350px] max-h-[500px] h-full w-full">
                 <img class="w-full h-full object-cover " src="{{ Vite::asset($ticketInfo['poster-link']) }}"
                     alt="">
+                    <h2 class="text-2xl text-center mt-4">Cinema {{ $ticketInfo['cinema-number'] }}</h2>
             </div>
 
             <div class="flex flex-col w-full gap-4">
                 <h1 class="font-bold text-5xl">{{ $ticketInfo['title'] }}</h1>
-                <h1 class="font-bold text-[40px] text-green ml-6">₱400</h1>
+                <h1 class="font-bold text-[40px] text-green ml-6">₱{{ $ticketInfo['ticket-cost'] }}</h1>
                 <section class="ml-6 flex flex-col gap-12 ">
                     <section>
                         <h2 class="text-2xl font-bold">Select Time Slot</h2>
@@ -22,21 +23,19 @@
                             <select name="time-slot"
                                 class="max-w-[400px] h-10 bg-transparent border border-green rounded-md text-center items-center">
                                 <option value="">Choose a Time Slot</option>
-                                <option value="12:30 P.M."
-                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '12:30 P.M.' ? 'selected' : '' }}>
-                                    12:30 P.M.</option>
-                                <option value="3:30 P.M."
-                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '3:30 P.M.' ? 'selected' : '' }}>
-                                    3:30 P.M.</option>
-                                <option value="5:30 P.M."
-                                    {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == '5:30 P.M.' ? 'selected' : '' }}>
-                                    5:30 P.M.</option>
+                                @foreach ($timeSlots as $time)
+                                    <option value="{{ $time }}"
+                                        {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == $time ? 'selected' : '' }}>
+                                        {{ $time }} P.M.
+                                    </option>
+                                @endforeach
                             </select>
 
                             @error('time-slot')
                                 <p class="-mt-4 text-red italic">{{ $message }}</p>
                             @enderror
-                            <p class="">You have selected: <span class="white">None</span></p>
+                            <p class="">You have selected: <span
+                                    class="white">{{ $ticketInfo['time-slot'] }}</span></p>
                         </div>
                     </section>
 
@@ -63,9 +62,11 @@
 
                             <div class="ml-6 space-y-5">
                                 <h4 class="text-xl font-medium">Total Cost</h4>
-                                <p class="text-2xl ml-4">₱ 4800.00 + ₱ 40.00 <span class="text-sm text-grey">(Booking
-                                        fee)</span> = <span class="border-0 border-green border-b-2 px-8">₱
-                                        4840.00</span></p>
+                                <p class="text-2xl ml-4">₱{{ $ticketInfo['total-cost'] - 40 }} + ₱40.00 <span
+                                        class="text-sm text-grey">(Booking
+                                        fee)</span> = <span
+                                        class="border-0 border-green border-b-2 px-8">₱{{ $ticketInfo['total-cost'] }}.00
+                                    </span></p>
                             </div>
                         </div>
                 </section>

@@ -37,12 +37,17 @@
                     <h6 class="text-green">May 30, 2024</h6>
 
                     <div class="flex flex-wrap pl-6 gap-6 max-w-[600px] mt-6">
-                        <h5
-                            class="flex border-2 border-green rounded-md mx-auto w-[300px] text-center justify-center items-center h-[50px] cursor-default">
-                            Not Currently Showing</h5>
-                        {{-- <h5
-                            class="flex items-center justify-center flex-1 basis-full min-w-fit min-h-16 rounded-md bg-transparent border-2 border-green max-w-40">
-                            12:30</h5> --}}
+                        @if (!$timeSlot)
+                            <h5
+                                class="flex border-2 border-green rounded-md mx-auto w-[300px] text-center justify-center items-center h-[50px] cursor-default">
+                                Not Currently Showing</h5>
+                        @else
+                            @foreach ($timeSlot as $time)
+                                <h5
+                                    class="flex items-center justify-center flex-1 basis-full min-w-fit min-h-16 rounded-md bg-transparent border-2 border-green max-w-40">
+                                    {{ $time }} P.M.</h5>
+                            @endforeach
+                        @endif
                         </h6>
                     </div>
                 </div>
