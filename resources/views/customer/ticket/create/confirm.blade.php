@@ -26,22 +26,22 @@
             <div class="max-w-[800px]">
                 <h2 class="text-4xl font-bold mb-12">Personal Details</h2>
                 <div class="space-y-4 ml-16">
-                    <x-form.input label="First Name" name="first-name">
+                    <x-form.input label="First Name" value="{{ old('first-name') }}" name="first-name">
                         @error('first-name')
                             <p class="-mt-4 text-red italic">{{ $message }}</p>
                         @enderror
                     </x-form.input>
-                    <x-form.input label="Last Name" name="last-name">
+                    <x-form.input label="Last Name" value="{{ old('last-name') }}" name="last-name">
                         @error('last-name')
                             <p class="-mt-4 text-red italic">{{ $message }}</p>
                         @enderror
                     </x-form.input>
-                    <x-form.input label="Email" name="email">
+                    <x-form.input label="Email" value="{{ old('email') }}" name="email">
                         @error('email')
                             <p class="-mt-4 text-red italic">{{ $message }}</p>
                         @enderror
                     </x-form.input>
-                    <x-form.input label="Phone Number" name="phone-number">
+                    <x-form.input label="Phone Number" value="{{ old('phone-number') }}" name="phone-number">
                         @error('phone-number')
                             <p class="-mt-4 text-red italic">{{ $message }}</p>
                         @enderror

@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             TimeSlotSeeder::class,
             SeatSeeder::class,
             SeatStatusSeeder::class,
-            BookingSeeder::class,
-            BookingSeatSeeder::class
+            // BookingSeeder::class,
+            // BookingSeatSeeder::class
             // Add more seeders as needed
         ]);
 
