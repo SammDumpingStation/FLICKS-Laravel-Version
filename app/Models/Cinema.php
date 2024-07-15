@@ -25,17 +25,12 @@ class Cinema extends Model
     {
         return $this->hasMany(TimeSlot::class);
     }
-
-    public function seat()
+    public function booking()
     {
-        return $this->belongsToMany(Seat::class, table: "seat_availabilities");
+        return $this->hasMany(Booking::class);
     }
-    public function seatStatus()
+    public function bookingSeat()
     {
-        return $this->belongsToMany(SeatStatus::class, table: "seat_availabilities");
+        return $this->hasMany(BookingSeat::class);
     }
 }
-
-// Cinema::with(['seat' => function ($query) {
-//     $query->select('id', 'status_id')->take(1); // Take only one seat record
-// }, 'seatStatus'])->find(1);

@@ -69,7 +69,7 @@
             </div>
 
             <x-button.container>
-                <x-button.buttons color="red" tag="a" href="/create/cancel">Cancel</x-button.buttons>
+                <x-button.buttons color="red" tag="a" href="/movies/{{ $ticketInfo['id'] }}/seat">Cancel</x-button.buttons>
                 <x-button.buttons>Confirm</x-button.buttons>
             </x-button.container>
         </form>

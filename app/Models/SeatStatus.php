@@ -11,12 +11,8 @@ class SeatStatus extends Model
     protected $fillable = [
         'status',
     ];
-    public function cinema()
+    public function bookingSeat()
     {
-        return $this->belongsToMany(Cinema::class , table: "seat_availabilities");
-    }
-    public function seat()
-    {
-        return $this->belongsToMany(Seat::class, table: "seat_availabilities");
+        return $this->hasMany(BookingSeat::class);
     }
 }

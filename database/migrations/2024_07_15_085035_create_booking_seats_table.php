@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Booking;
 use App\Models\Cinema;
 use App\Models\Seat;
 use App\Models\SeatStatus;
@@ -14,11 +15,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seat_availabilities', function (Blueprint $table) {
+        Schema::create('booking_seats', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Cinema::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Seat::class)->constrained()->cascadeOnDelete();;
-            $table->foreignIdFor(SeatStatus::class)->constrained()->cascadeOnDelete();;
+            $table->foreignIdFor(Booking::class);
+            $table->foreignIdFor(Seat::class);
+            $table->foreignIdFor(SeatStatus::class);
+            $table->foreignIdFor(Cinema::class);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seat_availabilities');
+        Schema::dropIfExists('booking_seats');
     }
 };
