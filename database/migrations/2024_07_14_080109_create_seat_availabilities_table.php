@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('seat_availabilities', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Cinema::class);
-            $table->foreignIdFor(Seat::class);
-            $table->foreignIdFor(SeatStatus::class);
+            $table->foreignIdFor(Cinema::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Seat::class)->constrained()->cascadeOnDelete();;
+            $table->foreignIdFor(SeatStatus::class)->constrained()->cascadeOnDelete();;
             $table->timestamps();
         });
     }

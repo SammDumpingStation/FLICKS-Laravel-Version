@@ -14,14 +14,14 @@ class MovieController extends Controller
     public function index()
     {
         Session::flush();
-        $nowShowing = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->where('status_id', '1')->with('cinema')->get();
+        $nowShowing = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
+            ->where('movie_status_id', '1')->with('cinema')->get();
 
-        $nextPicture = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->where('status_id', '2')->get();
+        $nextPicture = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
+            ->where('movie_status_id', '2')->get();
 
-        $comingSoon = Movie::select('id', 'title', 'poster_link', 'status_id')
-            ->where('status_id', '3')->get();
+        $comingSoon = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
+            ->where('movie_status_id', '3')->get();
 
         return view('customer.movie.index', [
             'nowShowing' => $nowShowing,

@@ -9,7 +9,7 @@
                     <img class="w-full h-full rounded-sm object-cover" src="{{ Vite::asset($movie->poster_link) }}"
                         alt="">
                 </div>
-                @if ($movie->status_id === 1)
+                @if ($movie->movie_status_id === 1)
                     <h2 class="text-2xl mt-4">Cinema {{ $movie->cinema->number }}</h2>
                 @endif
 
@@ -51,10 +51,11 @@
 
         <x-button.container>
             <x-button.buttons color="red" tag='a' href="/">Cancel</x-button.buttons>
-            @if ($movie->status_id != 1)
+            @if ($movie->movie_status_id != 1)
                 <x-button.buttons color="green" tag='a' href="/">Confirm</x-button.buttons>
             @else
-                <x-button.buttons color="green" tag='a' href="/movies/{{ $movie->id }}/book">Reserve Now</x-button.buttons>
+                <x-button.buttons color="green" tag='a' href="/movies/{{ $movie->id }}/book">Reserve
+                    Now</x-button.buttons>
             @endif
         </x-button.container>
     </main>

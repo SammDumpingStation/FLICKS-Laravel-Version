@@ -11,4 +11,12 @@ class Seat extends Model
     protected $fillable = [
         'name'
     ];
+    public function cinema()
+    {
+        return $this->belongsToMany(Cinema::class , table: "seat_availabilities");
+    }
+    public function seatStatus()
+    {
+        return $this->belongsToMany(SeatStatus::class, table: "seat_availabilities");
+    }
 }
