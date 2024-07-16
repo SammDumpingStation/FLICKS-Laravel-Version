@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Booking;
-use App\Models\BookingSeat;
-use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Seat;
-use App\Models\User;
+use App\Services\SessionServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class TicketController extends Controller
 {
+    protected $sessionServices;
+
+    public function __construct(SessionServices $sessionServices)
+    {
+        $this->sessionServices = $sessionServices;
+    }
+
+    protected function getTicket()
+    {
+        return $this->sessionServices->getTicketSession();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -26,25 +34,10 @@ class TicketController extends Controller
      */
     public function createBooking(Movie $movie)
     {
-
-        $cinemaID = Movie::with('cinema')->find($movie->id)->cinema->number;
-        $ticketCost = Movie::with('cinema')->find($movie->id)->cinema->ticket_cost;
-        $timeSlots = Cinema::find($cinemaID)->timeSlot->pluck('time_start');
-        Session::put('ticket_selection', [
-            'id' => $movie->id,
-            'title' => $movie->title,
-            'poster-link' => $movie->poster_link,
-            'time-slot' => Session::get('ticket_selection.time-slot', null),
-            'quantity' => Session::get('ticket_selection.quantity', null),
-            'total-cost' => Session::get('ticket_selection.total-cost', null),
-            'cinema-number' => $cinemaID,
-            'seats-selected' => Session::get('ticket_selection.seats-selected', null),
-            'ticket-cost' => $ticketCost,
-        ]);
-
-        $ticketInfo = Session::get('ticket_selection');
-
-        return view('customer.ticket.create.book', ['ticketInfo' => $ticketInfo, 'timeSlots' => $timeSlots]);
+        (new SessionServices)->storeTicketSession($movie);
+        $timeSlots = $movie->cinema->timeSlot->pluck('time_start');
+        $ticketSession = $this->getTicket();
+        return view('customer.ticket.create.book', ['ticket' => $ticketSession, 'timeSlot' => $timeSlots]);
     }
 
     public function storeBooking(Request $request)
@@ -53,42 +46,41 @@ class TicketController extends Controller
             'time-slot' => 'required',
             'quantity' => 'required',
         ]);
+        $ticketSession = $this->getTicket();
+        $totalCost = $ticketSession['ticket-cost'] * $validated['quantity'] + 40;
+        $movieID = $ticketSession['id'];
 
-        $totalCost = Session::get('ticket_selection.ticket-cost') * $validated['quantity'] + 40;
-        $ticketInfo = Session::get('ticket_selection');
-        $movieID = $ticketInfo['id'];
-
-        Session::put('ticket_selection.time-slot', $validated['time-slot']);
-        Session::put('ticket_selection.quantity', $validated['quantity']);
-        Session::put('ticket_selection.total-cost', $totalCost);
+        Session::put($ticketSession['time-slot'], $validated['time-slot']);
+        Session::put($ticketSession['quantity'], $validated['quantity']);
+        Session::put($ticketSession['total-cost'], $totalCost);
         // Retrieve
         return redirect('/movies/' . $movieID . '/seat');
     }
 
     public function createSeats()
     {
-        $ticketInfo = Session::get('ticket_selection');
+        $ticketSession = $this->getTicket();
         $seats = Seat::all();
 
-        return view('customer.ticket.create.seat', ['ticketInfo' => $ticketInfo, 'seats' => $seats]);
+        return view('customer.ticket.create.seat', ['ticket' => $ticketSession, 'seats' => $seats]);
     }
 
     public function storeSeats()
     {
-        $ticketInfo = Session::get('ticket_selection');
-        $movieID = $ticketInfo['id'];
+        $ticketSession = $this->getTicket();
+        $movieID = $ticketSession['id'];
         $seatSelected = ['1', '2', '3', '4'];
-        Session::put('ticket_selection.seats-selected', $seatSelected);
+        Session::put($ticketSession['seats-selected'], $seatSelected);
         return redirect('/movies/' . $movieID . '/booking/confirm');
     }
 
     public function bookingConfirm()
     {
-        $ticketInfo = Session::get('ticket_selection');
-        $seatsArray = $ticketInfo['seats-selected'];
+        $ticketSession = $this->getTicket();
+        $seatsArray = $ticketSession['seats-selected'];
         $seatNames = Seat::whereIn('id', $seatsArray)->pluck('name')->toArray();
         $string = ucwords(implode(', ', $seatNames));
-        return view('customer.ticket.create.confirm', ['ticketInfo' => $ticketInfo, 'seatSelected' => $string]);
+        return view('customer.ticket.create.confirm', ['ticket' => $ticketSession, 'seatSelected' => $string]);
     }
 
     public function storeTicket(Request $request)
@@ -100,48 +92,25 @@ class TicketController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone-number' => ['required', 'string', 'min:10'],
         ]);
-        //Store User -> name, email, number, registered admin
-        $newUser = User::create([
-            'first_name' => $validated['first-name'],
-            'last_name' => $validated['last-name'],
-            'email' => $validated['email'],
-            'phone_number' => $validated['phone-number'],
-            'registered' => false,
-            'admin' => false,
-        ]);
-
+        $ticketSession = $this->getTicket();
+        //Store User
+        $newUser = (new SessionServices)->sessionToUser($validated);
         //get new user id
         $newUserId = $newUser->id;
-
-        //Store Booking from session -> ticket_quantity, total_cost, time_selected, user_id, cinema_id
-        $ticketInfo = Session::get('ticket_selection');
-        $newBooking = Booking::create([
-            'ticket_quantity' => $ticketInfo['quantity'],
-            'total_cost' => $ticketInfo['total-cost'],
-            'time_selected' => $ticketInfo['time-slot'],
-            'user_id' => $newUserId,
-            'cinema_id' => $ticketInfo['cinema-number'],
-        ]);
-
+        //Store Booking from session
+        $newBooking = (new SessionServices)->sessionToBooking($ticketSession, $newUserId);
         $newBookingID = $newBooking->id;
+        //Store Seats Selected
+        $seatArray = $ticketSession['seats-selected'];
+        (new SessionServices)->sessionToSeat($ticketSession, $seatArray, $newBookingID);
 
-        //Store Seats Selected -> booking_id, seat_id, seat_status, cinema_id
-        $seatArray = $ticketInfo['seats-selected'];
-        foreach ($seatArray as $index) {
-            BookingSeat::create([
-                'booking_id' => $newBookingID,
-                'seat_id' => $index,
-                'seat_status_id' => 3,
-                'cinema_id' => $ticketInfo['cinema-number'],
-            ]);
-        }
-        return redirect('/movies/' . $ticketInfo['id'] . '/booking/success');
+        return redirect('/movies/' . $ticketSession['id'] . '/booking/success');
     }
 
     public function bookingSuccess()
     {
-        $ticketInfo = Session::get('ticket_selection');
-        return view('customer.ticket.create.success', ['ticketInfo' => $ticketInfo]);
+        $ticketSession = $this->getTicket();
+        return view('customer.ticket.create.success', ['ticketInfo' => $ticketSession]);
     }
 
     /**

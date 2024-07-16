@@ -3,20 +3,20 @@
         Ticket Confirmation
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav :id="$ticketInfo['id']" />
-        <form action="/movies/{{ $ticketInfo['id'] }}/booking/confirm" method="POST" class="flex flex-col gap-14">
+        <x-customer.ticket-nav :id="$ticket['id']" />
+        <form action="/movies/{{ $ticket['id'] }}/booking/confirm" method="POST" class="flex flex-col gap-14">
             @csrf
             <section class="flex gap-14">
-                <x-customer.ticket-poster :src="Vite::asset($ticketInfo['poster-link'])" alt="" />
+                <x-customer.ticket-poster :src="Vite::asset($ticket['poster-link'])" alt="" />
 
                 <div class="flex flex-col w-full">
                     <div class="w-full flex flex-col gap-4">
-                        <x-customer.ticket-label label="Movie Title:" title="{{ $ticketInfo['title'] }}" />
-                        <x-customer.ticket-label label="Time Slot:" title="{{ $ticketInfo['time-slot'] }}" />
+                        <x-customer.ticket-label label="Movie Title:" title="{{ $ticket['title'] }}" />
+                        <x-customer.ticket-label label="Time Slot:" title="{{ $ticket['time-slot'] }}" />
                         <x-customer.ticket-label label="Screen Location:" title="Cinema 1" />
                         <x-customer.ticket-label label="Tickets Reserved:"
-                            title="{{ $ticketInfo['quantity'] }} Tickets" />
-                        <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticketInfo['total-cost'] }}" />
+                            title="{{ $ticket['quantity'] }} Tickets" />
+                        <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticket['total-cost'] }}" />
                         <x-customer.ticket-label label="Seats Selected:" title="{{ $seatSelected }}" />
                     </div>
                 </div>
@@ -69,7 +69,7 @@
             </div>
 
             <x-button.container>
-                <x-button.buttons color="red" tag="a" href="/movies/{{ $ticketInfo['id'] }}/seat">Cancel</x-button.buttons>
+                <x-button.buttons color="red" tag="a" href="/movies/{{ $ticket['id'] }}/seat">Cancel</x-button.buttons>
                 <x-button.buttons>Confirm</x-button.buttons>
             </x-button.container>
         </form>

@@ -3,18 +3,18 @@
         Book Ticket
     </x-slot:heading>
     <x-customer.ticket-layout>
-        <x-customer.ticket-nav :id="$ticketInfo['id']" />
-        <form action="/movies/{{ $ticketInfo['id'] }}/book" method="POST" class="flex gap-12">
+        <x-customer.ticket-nav :id="$ticket['id']" />
+        <form action="/movies/{{ $ticket['id'] }}/book" method="POST" class="flex gap-12">
             @csrf
             <div class="max-w-[350px] max-h-[500px] h-full w-full">
-                <img class="w-full h-full object-cover " src="{{ Vite::asset($ticketInfo['poster-link']) }}"
+                <img class="w-full h-full object-cover " src="{{ Vite::asset($ticket['poster-link']) }}"
                     alt="">
-                    <h2 class="text-2xl text-center mt-4">Cinema {{ $ticketInfo['cinema-number'] }}</h2>
+                    <h2 class="text-2xl text-center mt-4">Cinema {{ $ticket['cinema-number'] }}</h2>
             </div>
 
             <div class="flex flex-col w-full gap-4">
-                <h1 class="font-bold text-5xl">{{ $ticketInfo['title'] }}</h1>
-                <h1 class="font-bold text-[40px] text-green ml-6">₱{{ $ticketInfo['ticket-cost'] }}</h1>
+                <h1 class="font-bold text-5xl">{{ $ticket['title'] }}</h1>
+                <h1 class="font-bold text-[40px] text-green ml-6">₱{{ $ticket['ticket-cost'] }}</h1>
                 <section class="ml-6 flex flex-col gap-12 ">
                     <section>
                         <h2 class="text-2xl font-bold">Select Time Slot</h2>
@@ -23,9 +23,9 @@
                             <select name="time-slot"
                                 class="max-w-[400px] h-10 bg-transparent border border-green rounded-md text-center items-center">
                                 <option value="">Choose a Time Slot</option>
-                                @foreach ($timeSlots as $time)
+                                @foreach ($timeSlot as $time)
                                     <option value="{{ $time }}"
-                                        {{ isset($ticketInfo['time-slot']) && $ticketInfo['time-slot'] == $time ? 'selected' : '' }}>
+                                        {{ isset($ticket['time-slot']) && $ticket['time-slot'] == $time ? 'selected' : '' }}>
                                         {{ $time }} P.M.
                                     </option>
                                 @endforeach
@@ -35,7 +35,7 @@
                                 <p class="-mt-4 text-red italic">{{ $message }}</p>
                             @enderror
                             <p class="">You have selected: <span
-                                    class="white">{{ $ticketInfo['time-slot'] }}</span></p>
+                                    class="white">{{ $ticket['time-slot'] }}</span></p>
                         </div>
                     </section>
 
@@ -49,7 +49,7 @@
                                 <div class="flex ml-4 border h-16 border-green rounded-md max-w-fit">
                                     <h6 class="text-2xl font-bold px-8 flex items-center hover:bg-green cursor-pointer">
                                         -</h6>
-                                    <input type="text" value="{{ $ticketInfo['quantity'] }}"
+                                    <input type="text" value="{{ $ticket['quantity'] }}"
                                         class="bg-transparent text-center max-w-20 border-0 border-green border-x"
                                         name="quantity">
                                     <h6 class="text-2xl font-bold px-8 flex items-center hover:bg-green cursor-pointer">
@@ -62,10 +62,10 @@
 
                             <div class="ml-6 space-y-5">
                                 <h4 class="text-xl font-medium">Total Cost</h4>
-                                <p class="text-2xl ml-4">₱{{ $ticketInfo['total-cost'] - 40 }} + ₱40.00 <span
+                                <p class="text-2xl ml-4">₱{{ $ticket['total-cost'] - 40 }} + ₱40.00 <span
                                         class="text-sm text-grey">(Booking
                                         fee)</span> = <span
-                                        class="border-0 border-green border-b-2 px-8">₱{{ $ticketInfo['total-cost'] }}.00
+                                        class="border-0 border-green border-b-2 px-8">₱{{ $ticket['total-cost'] }}.00
                                     </span></p>
                             </div>
                         </div>
