@@ -17,7 +17,7 @@
                             title="Cinema {{ $ticketInfo['cinema-number'] }}" />
                         <x-customer.ticket-label label="Tickets Reserved:"
                             title="{{ $ticketInfo['quantity'] }} Tickets" />
-                        <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticketInfo['total-cost'] }}" />
+                        <x-customer.ticket-label label="Total Cost:" title="₱{{ $ticketInfo['total-cost'] }}.00" />
                     </div>
                     <p class="mt-auto text-grey italic border-0 border-grey border-b max-w-fit">*Please ensure that you
                         are selecting seats of your choice</p>

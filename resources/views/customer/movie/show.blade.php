@@ -38,12 +38,7 @@
 
                 <div class="flex flex-col w-full mt-8">
                     <h2 class="font-bold text-2xl">Show Times</h2>
-                    @php
-                        use Carbon\Carbon;
-                        $currentTime = Carbon::now();
-                        $formattedTime = $currentTime->format('Y-m-d H:i:s');
-                    @endphp
-                    <h6 class="text-green">{{ $formattedTime }}</h6>
+                    <h6 class="text-green">{{ $currentTime }}</h6>
 
                     <div class="flex flex-wrap pl-6 gap-6 max-w-[600px] mt-6">
                         @if (!$timeSlot)

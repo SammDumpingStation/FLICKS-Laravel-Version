@@ -2,35 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Movie;
+use App\Helpers\Time;
 use App\Models\Cinema;
+use App\Models\Movie;
+use App\Services\MovieQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class MovieController extends Controller
 {
-    public function showCurrentTime()
-    {
-        $currentTime = Carbon::now();
-        $formattedTime = $currentTime->format('Y-m-d H:i:s');
-
-        return view('time', ['formattedTime' => $formattedTime]);
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         Session::flush();
-        $nowShowing = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
-            ->where('movie_status_id', '1')->with('cinema')->get();
-
-        $nextPicture = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
-            ->where('movie_status_id', '2')->get();
-
-        $comingSoon = Movie::select('id', 'title', 'poster_link', 'movie_status_id')
-            ->where('movie_status_id', '3')->get();
+        $nowShowing = (new MovieQuery)->status(1);
+        $nextPicture = (new MovieQuery)->status(2);
+        $comingSoon = (new MovieQuery)->status(3);
 
         return view('customer.movie.index', [
             'nowShowing' => $nowShowing,
@@ -66,7 +55,9 @@ class MovieController extends Controller
         if ($cinemaNumber) {
             $timeSlots = Cinema::find($movieCinema->cinema->number)->timeSlot->pluck('time_start');
         }
-        return view('customer.movie.show', ['movie' => $movieCinema, 'timeSlot' => $timeSlots]);
+        $time = Time::current();
+        return view('customer.movie.show', ['movie' => $movieCinema, 'timeSlot' => $timeSlots, 'currentTime' => $time,
+        ]);
     }
 
     /**
