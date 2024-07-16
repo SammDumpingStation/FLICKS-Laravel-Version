@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cinema;
+use Carbon\Carbon;
 use App\Models\Movie;
+use App\Models\Cinema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class MovieController extends Controller
 {
+    public function showCurrentTime()
+    {
+        $currentTime = Carbon::now();
+        $formattedTime = $currentTime->format('Y-m-d H:i:s');
+
+        return view('time', ['formattedTime' => $formattedTime]);
+    }
     /**
      * Display a listing of the resource.
      */

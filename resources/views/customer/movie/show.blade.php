@@ -21,9 +21,13 @@
                     <h3 class="ml-2 mb-3 text-grey">Rating: {{ $movie->rating_score }}/10</h3>
                 </div>
                 <div class="flex gap-3 w-1/2 text-center mt-2">
+                    @php
+                        $hr = floor($movie->length / 60);
+                        $min = $movie->length % 60;
+                    @endphp
                     <a
                         class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">
-                        {{ $movie->length }}</a>
+                        {{ $hr }} hr {{ $min }} min</a>
                     <a
                         class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->age_rating }}</a>
                     <a
@@ -34,7 +38,12 @@
 
                 <div class="flex flex-col w-full mt-8">
                     <h2 class="font-bold text-2xl">Show Times</h2>
-                    <h6 class="text-green">May 30, 2024</h6>
+                    @php
+                        use Carbon\Carbon;
+                        $currentTime = Carbon::now();
+                        $formattedTime = $currentTime->format('Y-m-d H:i:s');
+                    @endphp
+                    <h6 class="text-green">{{ $formattedTime }}</h6>
 
                     <div class="flex flex-wrap pl-6 gap-6 max-w-[600px] mt-6">
                         @if (!$timeSlot)
