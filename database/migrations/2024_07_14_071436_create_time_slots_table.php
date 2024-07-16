@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignIdFor(Cinema::class);
             $table->string('time_start');
             $table->string('time_end');
-            $table->timestamps();
         });
     }
 

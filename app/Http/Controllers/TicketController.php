@@ -50,9 +50,13 @@ class TicketController extends Controller
         $totalCost = $ticketSession['ticket-cost'] * $validated['quantity'] + 40;
         $movieID = $ticketSession['id'];
 
-        Session::put($ticketSession['time-slot'], $validated['time-slot']);
-        Session::put($ticketSession['quantity'], $validated['quantity']);
-        Session::put($ticketSession['total-cost'], $totalCost);
+        // Update the ticket_info session data
+        $ticketSession['time-slot'] = $validated['time-slot'];
+        $ticketSession['quantity'] = $validated['quantity'];
+        $ticketSession['total-cost'] = $totalCost;
+
+// Store the updated ticket_info back in the session
+        Session::put('ticket_info', $ticketSession);
         // Retrieve
         return redirect('/movies/' . $movieID . '/seat');
     }
@@ -70,7 +74,10 @@ class TicketController extends Controller
         $ticketSession = $this->getTicket();
         $movieID = $ticketSession['id'];
         $seatSelected = ['1', '2', '3', '4'];
-        Session::put($ticketSession['seats-selected'], $seatSelected);
+        $ticketSession['seats-selected'] = $seatSelected;
+        // Store the updated ticket_info back in the session
+        Session::put('ticket_info', $ticketSession);
+
         return redirect('/movies/' . $movieID . '/booking/confirm');
     }
 
