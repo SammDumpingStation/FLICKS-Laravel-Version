@@ -28,4 +28,7 @@ class Movie extends Model
     public function dimensions() {
         return $this->belongsToMany(Dimension::class);
     }
+    public function ageRating() {
+        return $this->belongsTo(AgeRating::class);
+    }
 }
