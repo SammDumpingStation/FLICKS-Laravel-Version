@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             TimeSlotSeeder::class,
             SeatSeeder::class,
             SeatStatusSeeder::class,
+            PaymentSeeder::class,
+            PaymentMethodSeeder::class,
+            PaymentMethodSeeder::class
             // BookingSeeder::class,
             // BookingSeatSeeder::class
             // Add more seeders as needed

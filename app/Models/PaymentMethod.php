@@ -10,6 +10,9 @@ class PaymentMethod extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'state'
+        'name'
     ];
+    public function payment() {
+        return $this->hasMany(Payment::class);
+    }
 }
