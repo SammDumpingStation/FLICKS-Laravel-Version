@@ -55,9 +55,8 @@ class TicketController extends Controller
         $ticketSession['quantity'] = $validated['quantity'];
         $ticketSession['total-cost'] = $totalCost;
 
-// Store the updated ticket_info back in the session
+        // Store the updated ticket_info back in the session
         Session::put('ticket_info', $ticketSession);
-        // Retrieve
         return redirect('/movies/' . $movieID . '/seat');
     }
 
