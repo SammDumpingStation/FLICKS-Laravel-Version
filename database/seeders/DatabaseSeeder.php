@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             PaymentMethodSeeder::class,
             BookingSeeder::class,
             BookingSeatSeeder::class,
-            MovieDimensionSeeder::class
+            DimensionMovieSeeder::class
             // Add more seeders as needed
         ]);
 

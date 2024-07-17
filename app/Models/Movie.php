@@ -25,4 +25,7 @@ class Movie extends Model
     public function cinema() {
         return $this->hasOne(Cinema::class);
     }
+    public function dimensions() {
+        return $this->belongsToMany(Dimension::class);
+    }
 }

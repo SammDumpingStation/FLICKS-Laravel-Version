@@ -13,4 +13,7 @@ class Dimension extends Model
         'name',
         'full_title'
     ];
+    public function movies() {
+        return $this->belongsToMany(Movie::class);
+    }
 }
