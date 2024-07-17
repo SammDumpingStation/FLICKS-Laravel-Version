@@ -18,14 +18,15 @@ class DimensionSeeder extends Seeder
             '4D',
             'IMAX',
             'VR',
-            'HDR'
+            'HDR',
         ];
         $fullTitles = [
             'Two Dimensional',
             'Three Dimensional',
+            'Four Dimensional',
             'Image Maximum',
             'Virtual Reality',
-            'High Dynamic Range'
+            'High Dynamic Range',
         ];
         foreach ($names as $index => $name) {
             Dimension::create([

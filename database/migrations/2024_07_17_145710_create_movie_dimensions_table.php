@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movie_dimension', function (Blueprint $table) {
+        Schema::create('movie_dimensions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Movie::class);
             $table->foreignIdFor(Dimension::class);

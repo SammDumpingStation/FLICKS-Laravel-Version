@@ -10,6 +10,7 @@ class Dimension extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable =[
-        'name'
+        'name',
+        'full_title'
     ];
 }

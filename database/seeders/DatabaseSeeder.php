@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
             DimensionSeeder::class,
             PaymentSeeder::class,
             PaymentMethodSeeder::class,
-            PaymentMethodSeeder::class,
             BookingSeeder::class,
-            BookingSeatSeeder::class
+            BookingSeatSeeder::class,
+            MovieDimensionSeeder::class
             // Add more seeders as needed
         ]);
 

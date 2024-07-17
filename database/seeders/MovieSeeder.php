@@ -53,21 +53,6 @@ class MovieSeeder extends Seeder
             'resources/images/Garfield-Movie.webp',
         ];
 
-        $age_rating = [
-            'R',
-            'PG-13',
-            'PG-13',
-            'PG-13',
-            'R-18',
-            'PG-13',
-            'PG-13',
-            'PG-13',
-            'R-18',
-            'PG-13',
-            'PG',
-            'PG',
-        ];
-
         $lengths = [
             117,
             84,
@@ -76,7 +61,7 @@ class MovieSeeder extends Seeder
             148,
             100,
             122,
-            0,
+            100,
             127,
             102,
             96,
@@ -89,16 +74,31 @@ class MovieSeeder extends Seeder
             8.00,
             4.00,
             9.00,
-            0.00,
-            0.00,
-            0.00,
-            0.00,
+            4.00,
+            5.00,
+            6.00,
+            7.00,
             4.00,
             9.00,
             8.00,
         ];
 
-        $status_id =[
+        $age_rating = [
+            4,
+            3,
+            3,
+            3,
+            5,
+            3,
+            3,
+            3,
+            5,
+            3,
+            2,
+            2,
+        ];
+
+        $status_id = [
             1,
             1,
             1,
@@ -110,7 +110,7 @@ class MovieSeeder extends Seeder
             3,
             3,
             3,
-            3
+            3,
         ];
 
         foreach ($movies as $key => $movie) {
@@ -118,10 +118,10 @@ class MovieSeeder extends Seeder
                 'title' => $movie,
                 'description' => $descriptions[$key],
                 'poster_link' => $poster_links[$key],
-                'age_rating' => $age_rating[$key], // Ensure your array name matches
                 'length' => $lengths[$key],
                 'rating_score' => $rating_score[$key],
-                'movie_status_id' => $status_id[$key]// Ensure your array name matches
+                'age_rating_id' => $age_rating[$key], // Ensure your array name matches
+                'movie_status_id' => $status_id[$key], // Ensure your array name matches
             ]);
         }
 

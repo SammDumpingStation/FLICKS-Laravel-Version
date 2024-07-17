@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('age_ratings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('full_title');
+            $table->string('name')->unique();
+            $table->string('full_title')->unique();
         });
     }
 
