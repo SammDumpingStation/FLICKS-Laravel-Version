@@ -23,11 +23,13 @@ class DatabaseSeeder extends Seeder
             TimeSlotSeeder::class,
             SeatSeeder::class,
             SeatStatusSeeder::class,
+            AgeRatingSeeder::class,
+            DimensionSeeder::class,
             PaymentSeeder::class,
             PaymentMethodSeeder::class,
-            PaymentMethodSeeder::class
-            // BookingSeeder::class,
-            // BookingSeatSeeder::class
+            PaymentMethodSeeder::class,
+            BookingSeeder::class,
+            BookingSeatSeeder::class
             // Add more seeders as needed
         ]);
 

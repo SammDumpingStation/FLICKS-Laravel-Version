@@ -12,11 +12,10 @@ class Movie extends Model
         'title',
         'description',
         'poster_link',
-        'age_rating',
-        'display',
         'length',
         'rating_score',
-        'rating_score',
+        'dimension_id',
+        'age_rating_id',
         'movie_status_id'
     ];
 

@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\AgeRating;
-use App\Models\Dimension;
 use App\Models\MovieStatus;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,7 +20,6 @@ return new class extends Migration
             $table->string('poster_link');
             $table->integer('length');
             $table->integer('rating_score');
-            $table->foreignIdFor(Dimension::class);
             $table->foreignIdFor(AgeRating::class);
             $table->foreignIdFor(MovieStatus::class);
             $table->timestamps();

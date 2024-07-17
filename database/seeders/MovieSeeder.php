@@ -68,21 +68,6 @@ class MovieSeeder extends Seeder
             'PG',
         ];
 
-        $displays = [
-            '2D',
-            '2D',
-            '2D',
-            'IMAX',
-            '2D',
-            '2D',
-            'IMAX',
-            '2D',
-            '2D',
-            '2D',
-            '2D',
-            '2D',
-        ];
-
         $lengths = [
             117,
             84,
@@ -134,7 +119,6 @@ class MovieSeeder extends Seeder
                 'description' => $descriptions[$key],
                 'poster_link' => $poster_links[$key],
                 'age_rating' => $age_rating[$key], // Ensure your array name matches
-                'display' => $displays[$key],
                 'length' => $lengths[$key],
                 'rating_score' => $rating_score[$key],
                 'movie_status_id' => $status_id[$key]// Ensure your array name matches

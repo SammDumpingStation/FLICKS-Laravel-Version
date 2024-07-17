@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MovieStatus extends Model
+class MovieDimension extends Model
 {
     use HasFactory;
-    public $timestamps = false;
     protected $fillable = [
-        'name',
+        'movie_id',
+        'dimension_id'
     ];
-
-    public function movie()
-    {
-        return $this->hasMany(Movie::class);
-    }
 }

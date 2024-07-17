@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PaymentMethod;
 use Illuminate\Database\Seeder;
 
 class PaymentMethodSeeder extends Seeder
@@ -12,6 +12,17 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $names = [
+            'Over-the-Counter',
+            'Gcash',
+            'Credit Card',
+            'Debit Card'
+        ];
+        foreach ($names as $name) {
+            PaymentMethod::create([
+                'name' => $name,
+            ]);
+        }
+
     }
 }

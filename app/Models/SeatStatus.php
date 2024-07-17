@@ -10,7 +10,7 @@ class SeatStatus extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'status',
+        'name',
     ];
     public function bookingSeat()
     {

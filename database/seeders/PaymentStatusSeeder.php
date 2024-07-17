@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PaymentStatus;
 use Illuminate\Database\Seeder;
 
 class PaymentStatusSeeder extends Seeder
@@ -12,6 +12,16 @@ class PaymentStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $names = [
+            'Paid',
+            'Pending',
+            'Overdue'
+        ];
+        foreach ($names as $name) {
+            PaymentStatus::create([
+                'name' => $name,
+            ]);
+        }
+
     }
 }

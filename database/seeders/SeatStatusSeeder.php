@@ -12,22 +12,18 @@ class SeatStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        $status = [
-            [
-                'status' => 'available',
-            ],
-            [
-                'status' => 'not-available',
-            ],
-            [
-                'status' => 'reserved',
-            ],
-            [
-                'status' => 'paid',
-            ],
-        ];
-        foreach ($status as $index) {
-            SeatStatus::create($index);
+        $name = [
+
+                'available',
+                'not-available',
+                'reserved',
+                'paid',
+            ]
+        ;
+        foreach ($name as $index) {
+            SeatStatus::create([
+                'name' => $index
+            ]);
         }
 
     }

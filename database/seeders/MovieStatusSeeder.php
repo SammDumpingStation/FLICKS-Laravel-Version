@@ -12,25 +12,17 @@ class MovieStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        $status = [
-            [
-                'status' => 'now-showing',
-            ],
-            [
-                'status' => 'next-picture',
-            ],
-            [
-                'status' => 'coming-soon',
-            ],
-            [
-                'status' => 'upcoming',
-            ],
-            [
-                'status' => 'stashed',
-            ],
-        ];
-        foreach ($status as $index) {
-            MovieStatus::create($index);
+        $name = [
+                'now-showing',
+                'next-picture',
+                'coming-soon',
+                'upcoming',
+                'stashed',
+            ];
+        foreach ($name as $index) {
+            MovieStatus::create([
+                'name' => $index
+            ]);
         }
     }
 }
