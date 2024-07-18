@@ -49,7 +49,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        $movieCinema = Movie::with('cinema')->find($movie->id);
+        $movieCinema = Movie::with('cinema', 'dimension')->find($movie->id);
         $timeSlots = null;
         $cinemaNumber = $movieCinema->cinema->number ?? null;
         if ($cinemaNumber) {

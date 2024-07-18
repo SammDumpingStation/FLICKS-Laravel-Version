@@ -25,7 +25,7 @@ class Movie extends Model
     public function cinema() {
         return $this->hasOne(Cinema::class);
     }
-    public function dimensions() {
+    public function dimension() {
         return $this->belongsToMany(Dimension::class);
     }
     public function ageRating() {

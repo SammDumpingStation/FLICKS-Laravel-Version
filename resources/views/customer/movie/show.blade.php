@@ -29,7 +29,7 @@
                         class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">
                         {{ $hr }} hr {{ $min }} min</a>
                     <a
-                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->age_rating }}</a>
+                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->dimension->pluck('name')->first() }}</a>
                     <a
                         class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->display }}</a>
                 </div>
