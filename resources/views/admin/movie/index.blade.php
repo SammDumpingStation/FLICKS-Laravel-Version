@@ -23,16 +23,8 @@
                                     <x-button.buttons tag="a" type="wide" class="text-center " href="movies/payment/{{ $movie->cinema->id }}">Approve
                                         Payments</x-button.buttons>
                                 </x-button.container>
-                                <h2 class="text-grey">Pending Payments: 20</h2>
+                                <h2 class="text-grey">Pending Payments: {{ $movie->cinema->payments->count() }}</h2>
                             </div>
-
-
-                            {{-- <x-admin.card-label label="Cinema 1" title="May 2, 2022" />
-                            <x-admin.card-label label="Movie Title" title="Furiosa Mad Max Saga" />
-                            <x-admin.card-label label="Duration" title="2 hr 27 min" />
-                            <x-admin.card-label label="Time Start" title="12:30 P.M." />
-                            <x-admin.card-label label="Status" title="Available" />
-                            <x-admin.card-label label="Pending" title="0 reservations" /> --}}
                         </div>
                     </section>
                 @endforeach

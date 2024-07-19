@@ -14,6 +14,7 @@ class MovieAdminController extends Controller
     public function index()
     {
         $movie = Movie::with('cinema')->where('movie_status_id', 1)->get();
+        
         return view('admin.movie.index', ['movies' => $movie]);
     }
 
