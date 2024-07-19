@@ -5,7 +5,7 @@
     <main class="flex flex-col gap-24 mb-[1000px] max-w-[1150px] w-full">
         <section class="">
             <x-admin.section-title title="Pending Payments" />
-            <section class="p-8 pb-0 flex flex-wrap justify-center gap-10">
+            <section class="p-8 pb-0 flex flex-wrap justify-center gap-8">
                 @foreach ($movies as $movie)
                     <section
                         class="flex-1 gap-3 basis-full max-w-[500px] cursor-pointer flex bg-secondary-grey pr-3 rounded-md">
@@ -34,50 +34,21 @@
 
         <section>
             <x-admin.section-title title="Movie Action Center" />
-            <section class="admin-container">
-                <a class="admin-sections" href="add_movie.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Add Movies</p>
-                </a>
-                <a class="admin-sections" href="manage_movies.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Manage Movies</p>
-                </a>
-                <a class="admin-sections" href="cinema_assignment.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Cinema Assignment</p>
-                </a>
-                <a class="admin-sections" href="update_schedules.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Update Schedules</p>
-                </a>
-                <a class="admin-sections" href="stashed_movies.php"> {{-- make a one for all "All Movies" Movies --}}
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Stashed Movies</p>
-                </a>
-                <a class="admin-sections" href="upcoming_movies.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Upcoming Movies</p>
-                </a>
+            <section class="p-8 pb-0 flex flex-wrap justify-center gap-8">
+                <x-admin.card-movie img="resources/icons/manage-white.svg" title="Add a Movie" href="" />
+                <x-admin.card-movie img="resources/icons/all-white.svg" title="See all Movies" href="" />
+                <x-admin.card-movie img="resources/icons/assign-white.svg" title="Cinema Assignment" href="" />
+                <x-admin.card-movie img="resources/icons/update-white.svg" title="Update Schedules" href="" />
             </section>
         </section>
 
         <section>
             <x-admin.section-title title="User Action Center" />
-            <h1>Action Center</h1>
-            <section class="admin-container">
-                <a class="admin-sections" href="paid_tickets_history.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Paid Tickets History</p>
-                </a>
-                <a class="admin-sections" href="admin_action_history.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Admin Action History</p>
-                </a>
-                <a class="admin-sections" href="registered_users.php">
-                    <img src="../../public/images/admin.png" alt="">
-                    <p>Registered Users</p>
-                </a>
+            <section class="p-8 pb-0 flex flex-wrap justify-center gap-8">
+                <x-admin.card-movie img="resources/icons/pay-white.svg" title="Paid Tickets History" href="" />
+                <x-admin.card-movie img="resources/icons/add-user-white.svg" title="Add a User" href="" />
+                <x-admin.card-movie img="resources/icons/registered-white.svg" title="Registered Users" href="" />
+                <x-admin.card-movie img="resources/icons/admin-white.svg" title="Admin Roster" href="" />
             </section>
         </section>
     </main>
