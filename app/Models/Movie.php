@@ -16,19 +16,23 @@ class Movie extends Model
         'rating_score',
         'dimension_id',
         'age_rating_id',
-        'movie_status_id'
+        'movie_status_id',
     ];
 
-    public function status() {
+    public function status()
+    {
         return $this->belongsTo(MovieStatus::class);
     }
-    public function cinema() {
+    public function cinema()
+    {
         return $this->hasOne(Cinema::class);
     }
-    public function dimension() {
+    public function dimension()
+    {
         return $this->belongsToMany(Dimension::class);
     }
-    public function ageRating() {
+    public function ageRating()
+    {
         return $this->belongsTo(AgeRating::class);
     }
 }

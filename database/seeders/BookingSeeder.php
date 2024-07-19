@@ -36,11 +36,6 @@ class BookingSeeder extends Seeder
             1,
             2,
         ];
-        $cinemaID = [
-            1,
-            2,
-            2,
-        ];
 
         foreach ($quantity as $key => $index) {
             Booking::create([
@@ -48,8 +43,6 @@ class BookingSeeder extends Seeder
                 'total_cost' => $totalCost[$key],
                 'time_selected' => $timeSelected[$key],
                 'user_id' => $userID[$key], // Ensure your array name matches
-                'cinema_id' => $cinemaID[$key], // Ensure your array name matches
-
             ]);
         }
     }

@@ -12,6 +12,7 @@ class Payment extends Model
         'booking_id',
         'payment_method_id',
         'payment_status_id',
+        'cinema_id',
     ];
     public function booking() {
         return $this->belongsTo(Booking::class);

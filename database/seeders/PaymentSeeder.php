@@ -16,7 +16,7 @@ class PaymentSeeder extends Seeder
             1,
             2,
             3,
-            4
+            4,
         ];
         $method = [
             1,
@@ -28,13 +28,21 @@ class PaymentSeeder extends Seeder
             1,
             2,
             3,
-            1
+            1,
         ];
+        $cinemaID = [
+            1,
+            1,
+            3,
+            4,
+        ];
+
         foreach ($names as $name => $value) {
             Payment::create([
                 'booking_id' => $value,
                 'payment_method_id' => $method[$name],
-                'payment_status_id' => $status[$name]
+                'payment_status_id' => $status[$name],
+                'cinema_id' => $cinemaID[$name],
             ]);
         }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Booking;
+use App\Models\Cinema;
 use App\Models\PaymentMethod;
 use App\Models\PaymentStatus;
 use Illuminate\Database\Migrations\Migration;
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Booking::class);
             $table->foreignIdFor(PaymentMethod::class);
             $table->foreignIdFor(PaymentStatus::class);
+            $table->foreignIdFor(Cinema::class);
             $table->timestamps();
         });
     }

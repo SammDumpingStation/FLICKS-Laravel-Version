@@ -21,6 +21,8 @@
 
 @if ($tag === 'a' && $color === 'red')
     <a {{ $red }}>{{ $slot }}</a>
+@elseif ($tag === 'a' && $color === 'green' && $type === 'wide')
+    <a {{ $greenWide }}>{{ $slot }}</a>
 @elseif($tag === 'a' && $color === 'green')
     <a {{ $green }}>{{ $slot }}</a>
 @elseif ($tag === 'a' && $color === 'transparent')

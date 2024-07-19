@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('total_cost');
             $table->string('time_selected');
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Cinema::class);
             $table->timestamps();
         });
     }

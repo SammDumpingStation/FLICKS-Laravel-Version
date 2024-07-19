@@ -11,7 +11,7 @@ class MovieSeeder extends Seeder
         $movies = [
             'Bad Boys: Ride or Die',
             'Haikyuu!! The Dumpster Battle',
-            'Kingdom of the Planet of',
+            'Kingdom of the Planet of the Apes',
             'Winnie The Pooh: Blood and Honey',
             'Furiosa: A Mad Max Movie',
             'A Quiet Place: Day One',

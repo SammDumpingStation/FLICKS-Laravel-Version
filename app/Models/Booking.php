@@ -13,7 +13,6 @@ class Booking extends Model
         'total_cost',
         'time_selected',
         'user_id',
-        'cinema_id',
     ];
     public function user()
     {
