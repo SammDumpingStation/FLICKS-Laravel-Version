@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\Payment;
 use App\Models\BookingSeat;
 use Illuminate\Support\Facades\Session;
 
@@ -51,7 +52,7 @@ class SessionServices
             'cinema_id' => $ticketSession['cinema-number'],
         ]);
     }
-    
+
     public function sessionToSeat($ticketSession, $seatArray, $newBookingID)
     {
         foreach ($seatArray as $index) {
@@ -62,5 +63,14 @@ class SessionServices
                 'cinema_id' => $ticketSession['cinema-number'],
             ]);
         }
+    }
+    public function sessionToPayment($newBookingID)
+    {
+        Payment::create([
+            'booking_id' => $newBookingID,
+            'payment_method_id' => 1,
+            'payment_status_id' => 2,
+        ]);
+
     }
 }

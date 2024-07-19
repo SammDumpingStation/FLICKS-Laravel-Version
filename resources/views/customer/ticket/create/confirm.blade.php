@@ -14,8 +14,7 @@
                         <x-customer.ticket-label label="Movie Title:" title="{{ $ticket['title'] }}" />
                         <x-customer.ticket-label label="Time Slot:" title="{{ $ticket['time-slot'] }}" />
                         <x-customer.ticket-label label="Screen Location:" title="Cinema 1" />
-                        <x-customer.ticket-label label="Tickets Reserved:"
-                            title="{{ $ticket['quantity'] }} Tickets" />
+                        <x-customer.ticket-label label="Tickets Reserved:" title="{{ $ticket['quantity'] }} Tickets" />
                         <x-customer.ticket-label label="Total Cost:" title="₱ {{ $ticket['total-cost'] }}" />
                         <x-customer.ticket-label label="Seats Selected:" title="{{ $seatSelected }}" />
                     </div>
@@ -57,7 +56,11 @@
                         <h3 class="text-green text-xl pb-2 cursor-pointer">Available Methods</h3>
                         <x-customer.payment-section for='cash' method='Over-the-Counter' status='available'
                             cursor="cursor-pointer " />
+                        @error('method')
+                            <p class="text-red italic">{{ $message }}</p>
+                        @enderror
                     </div>
+
 
                     <div class="flex flex-col gap-4">
                         <h3 class="text-green text-xl pb-2">Unavailable Methods</h3>
@@ -69,7 +72,8 @@
             </div>
 
             <x-button.container>
-                <x-button.buttons color="red" tag="a" href="/movies/{{ $ticket['id'] }}/seat">Cancel</x-button.buttons>
+                <x-button.buttons color="red" tag="a"
+                    href="/movies/{{ $ticket['id'] }}/seat">Cancel</x-button.buttons>
                 <x-button.buttons>Confirm</x-button.buttons>
             </x-button.container>
         </form>

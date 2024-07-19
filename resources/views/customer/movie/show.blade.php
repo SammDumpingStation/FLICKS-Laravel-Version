@@ -29,9 +29,9 @@
                         class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">
                         {{ $hr }} hr {{ $min }} min</a>
                     <a
-                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->dimension->pluck('name')->first() }}</a>
+                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->dimension->pluck('name') }}</a>
                     <a
-                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->display }}</a>
+                        class="flex-1 basis-full max-w-[120px] max-h-16 min-w-fit rounded-sm p-1 bg-green border-2 border-transparent cursor-default">{{ $movie->ageRating->name }}</a>
                 </div>
 
                 <p class="text-grey mt-8 tracking-wider max-w-[75ch] min-h-[200px]">{{ $movie->description }}</p>

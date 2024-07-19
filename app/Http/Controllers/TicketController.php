@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Payment;
 use App\Models\Seat;
 use App\Services\SessionServices;
 use Illuminate\Http\Request;
@@ -93,22 +94,27 @@ class TicketController extends Controller
     {
         //validate
         $validated = $request->validate([
-            'first-name' => ['required', 'min:5', 'string', 'max:255'],
-            'last-name' => ['required', 'min:5', 'string', 'max:255'],
+            'first-name' => ['required', 'string', 'max:255'],
+            'last-name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone-number' => ['required', 'string', 'min:10'],
+            'method' => 'required',
         ]);
         $ticketSession = $this->getTicket();
+        //Create new instance of the Session Service Class
+        $sessionService = new SessionServices;
         //Store User
-        $newUser = (new SessionServices)->sessionToUser($validated);
+        $newUser = $sessionService->sessionToUser($validated);
         //get new user id
         $newUserId = $newUser->id;
         //Store Booking from session
-        $newBooking = (new SessionServices)->sessionToBooking($ticketSession, $newUserId);
+        $newBooking = $sessionService->sessionToBooking($ticketSession, $newUserId);
         $newBookingID = $newBooking->id;
         //Store Seats Selected
         $seatArray = $ticketSession['seats-selected'];
-        (new SessionServices)->sessionToSeat($ticketSession, $seatArray, $newBookingID);
+        $sessionService->sessionToSeat($ticketSession, $seatArray, $newBookingID);
+        //Store Payment Details
+        $sessionService->sessionToPayment($newBookingID);
 
         return redirect('/movies/' . $ticketSession['id'] . '/booking/success');
     }
