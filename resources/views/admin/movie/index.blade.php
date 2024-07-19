@@ -2,9 +2,9 @@
     <x-slot:heading>
         Home Page
     </x-slot:heading>
-    <main class="flex flex-col gap-24 mb-[1000px] w-full">
+    <main class="flex flex-col gap-24 mb-[1000px] max-w-[1150px] w-full">
         <section class="">
-            <h1 class="text-4xl font-bold">Pending Payments</h1>
+            <x-admin.section-title title="Pending Payments" />
             <section class="p-8 pb-0 flex flex-wrap justify-center gap-10">
                 @foreach ($movies as $movie)
                     <section
@@ -20,7 +20,8 @@
                             </div>
                             <div class="space-y-2 mb-4">
                                 <x-button.container type="wide" class="flex-col">
-                                    <x-button.buttons tag="a" type="wide" class="text-center " href="movies/payment/{{ $movie->cinema->id }}">Approve
+                                    <x-button.buttons tag="a" type="wide" class="text-center "
+                                        href="movies/payment/{{ $movie->cinema->id }}">Approve
                                         Payments</x-button.buttons>
                                 </x-button.container>
                                 <h2 class="text-grey">Pending Payments: {{ $movie->cinema->payments->count() }}</h2>
@@ -32,7 +33,7 @@
         </section>
 
         <section>
-            <h1>Movie Section</h1>
+            <x-admin.section-title title="Movie Action Center" />
             <section class="admin-container">
                 <a class="admin-sections" href="add_movie.php">
                     <img src="../../public/images/admin.png" alt="">
@@ -50,7 +51,7 @@
                     <img src="../../public/images/admin.png" alt="">
                     <p>Update Schedules</p>
                 </a>
-                <a class="admin-sections" href="stashed_movies.php">
+                <a class="admin-sections" href="stashed_movies.php"> {{-- make a one for all "All Movies" Movies --}}
                     <img src="../../public/images/admin.png" alt="">
                     <p>Stashed Movies</p>
                 </a>
@@ -62,6 +63,7 @@
         </section>
 
         <section>
+            <x-admin.section-title title="User Action Center" />
             <h1>Action Center</h1>
             <section class="admin-container">
                 <a class="admin-sections" href="paid_tickets_history.php">
