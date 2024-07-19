@@ -23,4 +23,8 @@ class Payment extends Model
     public function status() {
         return $this->belongsTo(PaymentStatus::class);
     }
+    public function cinema()
+    {
+        return $this->belongsTo(Cinema::class);
+    }
 }

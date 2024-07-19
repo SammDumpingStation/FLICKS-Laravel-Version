@@ -33,4 +33,8 @@ class Cinema extends Model
     {
         return $this->hasMany(BookingSeat::class);
     }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

@@ -20,7 +20,7 @@
                             </div>
                             <div class="space-y-2 mb-4">
                                 <x-button.container type="wide" class="flex-col">
-                                    <x-button.buttons tag="a" type="wide" class="text-center " href="movies/payment/{{ $movie->id }}">Approve
+                                    <x-button.buttons tag="a" type="wide" class="text-center " href="movies/payment/{{ $movie->cinema->id }}">Approve
                                         Payments</x-button.buttons>
                                 </x-button.container>
                                 <h2 class="text-grey">Pending Payments: 20</h2>

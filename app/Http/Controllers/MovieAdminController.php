@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cinema;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,11 @@ class MovieAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movie $movie)
+    public function show(Cinema $cinema)
     {
-        //
+        $cinema->load('payments');
+        $payments = $cinema->payments;
+        dd($payments);
     }
 
     /**
