@@ -34,7 +34,7 @@
     <section>
         <x-admin.section-title title="Movie Action Center" />
         <section class="p-8 pb-0 flex flex-wrap justify-center gap-8">
-            <x-admin.card-movie img="resources/icons/manage-white.svg" title="Add a Movie" href="" />
+            <x-admin.card-movie img="resources/icons/manage-white.svg" title="Add a Movie" href="/admin/create-movie" />
             <x-admin.card-movie img="resources/icons/all-white.svg" title="See all Movies" href="" />
             <x-admin.card-movie img="resources/icons/assign-white.svg" title="Cinema Assignment" href="" />
             <x-admin.card-movie img="resources/icons/update-white.svg" title="Update Status" href="" />

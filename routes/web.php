@@ -33,3 +33,4 @@ Route::post('/movies/{movie}/booking/confirm', [TicketUserController::class, 'st
 //Admin
 Route::get('/admin', [TicketAdminController::class, 'index']);
 Route::get('/admin/payment/{cinema}', [TicketAdminController::class, 'show']);
+Route::get('/admin/create-movie', [TicketAdminController::class, 'create']);

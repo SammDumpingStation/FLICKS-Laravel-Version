@@ -21,7 +21,7 @@ class TicketAdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.movie.create');
     }
 
     /**
