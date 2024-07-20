@@ -43,8 +43,8 @@
                     <x-admin.payment-button type="delete" />
                 </div>
                 <div class="flex justify-between items-end">
-                    <h1 class="text-grey text-sm">Time Booked: May, 20 2022, 12:30 P.M.</h1>
-                    <h1 class="text-grey text-xs">Reference Number: 12345678</h1>
+                    <h1 class="text-grey text-sm">Time Booked: {{ App\Helpers\Time::format($payment->booking->created_at) }}</h1>
+                    <h1 class="text-grey text-xs">Reference Number: {{ $payment->booking->id }}</h1>
                 </div>
             </div>
         @endforeach

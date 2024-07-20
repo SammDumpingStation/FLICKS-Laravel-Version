@@ -40,7 +40,13 @@ class TicketAdminController extends Controller
 
         $cinemaPayment = $cinema->payments()
             ->where('payment_status_id', 2)
-            ->with(['booking.user', 'booking.bookingSeat', 'booking.bookingSeat.seat'])
+            ->with(['booking' => function ($query) {
+                $query->with([
+                    'user:id,first_name,last_name',
+                    'bookingSeat',
+                    'bookingSeat.seat',
+                ]);
+            }])
             ->get();
 
         // 2 is the "Pending" Status

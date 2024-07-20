@@ -20,7 +20,7 @@
                         <div class="space-y-2 mb-4">
                             <x-button.container type="wide" class="flex-col">
                                 <x-button.buttons tag="a" type="wide" class="text-center "
-                                    href="admin/payment/{{ $cinema->id }}">Approve
+                                    href="/admin/payment/{{ $cinema->id }}">Approve
                                     Payments</x-button.buttons>
                             </x-button.container>
                             <h2 class="text-grey">Pending Payments: {{ $cinema->payments->where('payment_status_id', 2)->count() }}</h2>

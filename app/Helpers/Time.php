@@ -13,6 +13,12 @@ class Time
         $current = $currentTime->format('h:i A');
         return $currentDate . ' ' . $current;
     }
+    public static function format($time) {
+        $carbonDate = Carbon::parse($time);
+        $date = $carbonDate->format('F d, Y');
+        $bookTime = $carbonDate->format('h:i A');
+        return $date . " " . $bookTime;
+    }
 }
 
 //DATE
