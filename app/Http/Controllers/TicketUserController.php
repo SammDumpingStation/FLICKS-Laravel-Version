@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\Payment;
 use App\Models\Seat;
 use App\Services\SessionServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class TicketController extends Controller
+class TicketUserController extends Controller
 {
     protected $sessionServices;
 
@@ -27,7 +26,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+
+
     }
 
     /**

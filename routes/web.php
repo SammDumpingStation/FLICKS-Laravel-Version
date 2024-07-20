@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MovieController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\MovieUserController;
-use App\Http\Controllers\MovieAdminController;
+use App\Http\Controllers\TicketUserController;
+use App\Http\Controllers\TicketAdminController;
 use App\Http\Controllers\RegisteredUsersController;
 
 
@@ -23,15 +22,15 @@ Route::post('/register', [RegisteredUsersController::class, 'store']);
 Route::get('/', [MovieUserController::class, 'index']);
 Route::get('/movies/{movie}', [MovieUserController::class, 'show']);
 
-Route::get('/movies/{movie}/book', [TicketController::class, 'createBooking']);
-Route::get('/movies/{movie}/seat', [TicketController::class, 'createSeats']);
-Route::get('/movies/{movie}/booking/confirm', [TicketController::class, 'bookingConfirm']);
-Route::get('/movies/{movie}/booking/success', [TicketController::class, 'bookingSuccess']);
+Route::get('/movies/{movie}/book', [TicketUserController::class, 'createBooking']);
+Route::get('/movies/{movie}/seat', [TicketUserController::class, 'createSeats']);
+Route::get('/movies/{movie}/booking/confirm', [TicketUserController::class, 'bookingConfirm']);
+Route::get('/movies/{movie}/booking/success', [TicketUserController::class, 'bookingSuccess']);
 
-Route::post('/movies/{movie}/book', [TicketController::class, 'storeBooking']);
-Route::post('/movies/{movie}/seat', [TicketController::class, 'storeSeats']);
-Route::post('/movies/{movie}/booking/confirm', [TicketController::class, 'storeTicket']);
+Route::post('/movies/{movie}/book', [TicketUserController::class, 'storeBooking']);
+Route::post('/movies/{movie}/seat', [TicketUserController::class, 'storeSeats']);
+Route::post('/movies/{movie}/booking/confirm', [TicketUserController::class, 'storeTicket']);
 
 //Admin
-Route::get('/admin', [MovieAdminController::class, 'index']);
-Route::get('movies/payment/{cinema}', [MovieAdminController::class, 'show']);
+Route::get('/admin', [TicketAdminController::class, 'index']);
+Route::get('movies/payment/{cinema}', [TicketAdminController::class, 'show']);

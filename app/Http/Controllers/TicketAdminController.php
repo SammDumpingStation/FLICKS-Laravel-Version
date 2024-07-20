@@ -6,14 +6,15 @@ use App\Models\Cinema;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
-class MovieAdminController extends Controller
+class TicketAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
+        $movie = Movie::with('cinema')->where('movie_status_id', 1)->get();
+        return view('admin.movie.index', ['movies' => $movie]);
     }
 
     /**
@@ -37,13 +38,15 @@ class MovieAdminController extends Controller
      */
     public function show(Cinema $cinema)
     {
-
+        $cinemaPayment = $cinema->load('payments');
+        $available = $cinema->capacity - $cinema->payments->count();
+        return view('admin.movie.show', ['cinema' => $cinemaPayment, 'available' => $available]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Movie $movie)
+    public function edit(Cinema $cinema)
     {
         //
     }
@@ -51,7 +54,7 @@ class MovieAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, Cinema $cinema)
     {
         //
     }
@@ -59,7 +62,7 @@ class MovieAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movie $movie)
+    public function destroy(Cinema $cinema)
     {
         //
     }
