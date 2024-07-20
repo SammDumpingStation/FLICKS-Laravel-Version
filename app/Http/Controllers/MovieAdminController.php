@@ -13,7 +13,7 @@ class MovieAdminController extends Controller
      */
     public function index()
     {
-
+        return view('admin.movie.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class MovieAdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.movie.create');
     }
 
     /**

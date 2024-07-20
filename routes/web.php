@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CinemaController;
+use App\Http\Controllers\MovieAdminController;
 use App\Http\Controllers\MovieUserController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TicketAdminController;
@@ -33,4 +36,13 @@ Route::post('/movies/{movie}/booking/confirm', [TicketUserController::class, 'st
 //Admin
 Route::get('/admin', [TicketAdminController::class, 'index']);
 Route::get('/admin/payment/{cinema}', [TicketAdminController::class, 'show']);
-Route::get('/admin/create-movie', [TicketAdminController::class, 'create']);
+
+Route::get('/admin/create-movie', [MovieAdminController::class, 'create']);
+Route::get('/admin/all-movies', [MovieAdminController::class, 'index']);
+Route::get('/admin/cinema-assignment', [CinemaController::class, 'updateCinemaAssignment']);
+Route::get('/admin/update-status', [CinemaController::class, 'updateStatus']);
+
+Route::get('/admin/paid-history', [PaymentController::class, 'index']);
+Route::get('/admin/create-user', [RegisteredUsersController::class, 'createAdmin']);
+Route::get('/admin/register-index', [RegisteredUsersController::class, 'index']);
+Route::get('/admin/admin-index', [RegisteredUsersController::class, 'indexAdmin']);

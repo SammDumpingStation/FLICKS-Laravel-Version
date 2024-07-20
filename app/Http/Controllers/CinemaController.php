@@ -54,6 +54,14 @@ class CinemaController extends Controller
     {
         //
     }
+    public function updateCinemaAssignment()
+    {
+        return view('admin.cinema.update-cinema');
+    }
+    public function updateStatus()
+    {
+        return view('admin.cinema.update-status');
+    }
 
     /**
      * Remove the specified resource from storage.

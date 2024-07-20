@@ -26,7 +26,11 @@ class RegisteredUsersController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.user.register-users');
+    }
+    public function indexAdmin()
+    {
+        return view('admin.user.register-admin');
     }
 
     /**
@@ -35,6 +39,10 @@ class RegisteredUsersController extends Controller
     public function create()
     {
         return view('auth.register');
+    }
+    public function createAdmin()
+    {
+        return view('admin.user.register-admin');
     }
 
     /**
