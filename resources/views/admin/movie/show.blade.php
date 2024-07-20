@@ -22,7 +22,7 @@
                     <div class="flex text-4xl font-bold items-end gap-4">
                         <img class="h-12 w-12" src="{{ Vite::asset('resources/icons/ticket-green.svg') }}"
                             alt="">
-                        ₱{{ $payment->booking->total_cost }} <span class="text-sm -ml-2 font-normal text-grey">Total
+                        ₱{{ $payment->booking->total_cost ?? null }} <span class="text-sm -ml-2 font-normal text-grey">Total
                             Cost</span>
                     </div>
                     <a href="">
@@ -31,20 +31,20 @@
                 </div>
                 <div class="flex flex-col ml-10 gap-1">
                     <x-admin.payment-label label="Name"
-                        title="{{ $payment->booking->user->first_name }} {{ $payment->booking->user->last_name }}" />
-                    <x-admin.payment-label label="Time Slot" title="{{ $payment->booking->time_selected }} P.M." />
+                        title="{{ $payment->booking->user->first_name ?? null }} {{ $payment->booking->user->last_name ?? null }}" />
+                    <x-admin.payment-label label="Time Slot" title="{{ $payment->booking->time_selected ?? null }} P.M." />
                     <x-admin.payment-label label="Ticket Quantity"
-                        title="{{ $payment->booking->ticket_quantity }} ticket/s" />
+                        title="{{ $payment->booking->ticket_quantity ?? null }} ticket/s" />
 
-                    <x-admin.payment-label label="Seats Selected" title="{{ App\Helpers\getSeatNames($payment) }}" />
+                    <x-admin.payment-label label="Seats Selected" title="{{ App\Helpers\getSeatNames($payment) ?? null }}" />
                 </div>
                 <div class="space-x-4 flex items-end justify-end">
                     <x-admin.payment-button />
                     <x-admin.payment-button type="delete" />
                 </div>
                 <div class="flex justify-between items-end">
-                    <h1 class="text-grey text-sm">Time Booked: {{ App\Helpers\Time::format($payment->booking->created_at) }}</h1>
-                    <h1 class="text-grey text-xs">Reference Number: {{ $payment->booking->id }}</h1>
+                    <h1 class="text-grey text-sm">Time Booked: {{ App\Helpers\Time::format($payment->booking->created_at)}}</h1>
+                    <h1 class="text-grey text-xs">Reference Number: {{ $payment->booking->id}}</h1>
                 </div>
             </div>
         @endforeach
