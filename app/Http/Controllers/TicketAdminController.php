@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cinema;
-use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class TicketAdminController extends Controller
@@ -38,7 +37,13 @@ class TicketAdminController extends Controller
      */
     public function show(Cinema $cinema)
     {
-        $cinemaPayment = $cinema->load('payments')->payments->where('payment_status_id', 2); // 2 is the "Pending" Status
+
+        $cinemaPayment = $cinema->payments()
+            ->where('payment_status_id', 2)
+            ->with(['booking.user', 'booking.bookingSeat', 'booking.bookingSeat.seat'])
+            ->get();
+
+        // 2 is the "Pending" Status
         $available = $cinema->capacity - $cinemaPayment->count();
         return view('admin.movie.show', ['payments' => $cinemaPayment, 'available' => $available]);
     }

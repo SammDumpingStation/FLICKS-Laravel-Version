@@ -22,7 +22,7 @@
                     <div class="flex text-4xl font-bold items-end gap-4">
                         <img class="h-12 w-12" src="{{ Vite::asset('resources/icons/ticket-green.svg') }}"
                             alt="">
-                        {{ $payment->booking->total_cost }} <span class="text-sm -ml-2 font-normal text-grey">Total
+                        ₱{{ $payment->booking->total_cost }} <span class="text-sm -ml-2 font-normal text-grey">Total
                             Cost</span>
                     </div>
                     <a href="">
@@ -35,12 +35,8 @@
                     <x-admin.payment-label label="Time Slot" title="{{ $payment->booking->time_selected }} P.M." />
                     <x-admin.payment-label label="Ticket Quantity"
                         title="{{ $payment->booking->ticket_quantity }} ticket/s" />
-                    @php
-                        $seatArray = $payment->booking->bookingSeat->pluck('seat_id');
-                        $seats = \App\Models\Seat::whereIn('id', $seatArray)->get();
-                        $seatNames = $seats->pluck('name')->toArray();
-                    @endphp
-                    <x-admin.payment-label label="Seats Selected" title="{{ implode(', ', $seatNames) }}" />
+
+                    <x-admin.payment-label label="Seats Selected" title="{{ App\Helpers\getSeatNames($payment) }}" />
                 </div>
                 <div class="space-x-4 flex items-end justify-end">
                     <x-admin.payment-button />
