@@ -1,4 +1,4 @@
-<x-customer.layout>
+<x-layout>
     <x-slot:heading>
         Book Ticket
     </x-slot:heading>
@@ -78,4 +78,4 @@
             </div>
         </form>
     </x-customer.ticket-layout>
-</x-customer.layout>
+</x-layout>

@@ -13,8 +13,8 @@ class TicketAdminController extends Controller
      */
     public function index()
     {
-        $movie = Movie::with('cinema')->where('movie_status_id', 1)->get();
-        return view('admin.movie.index', ['movies' => $movie]);
+        $cinema = Cinema::with('movie', 'payments')->get();
+        return view('admin.movie.index', ['cinemas' => $cinema]);
     }
 
     /**
@@ -38,9 +38,9 @@ class TicketAdminController extends Controller
      */
     public function show(Cinema $cinema)
     {
-        $cinemaPayment = $cinema->load('payments');
-        $available = $cinema->capacity - $cinema->payments->count();
-        return view('admin.movie.show', ['cinema' => $cinemaPayment, 'available' => $available]);
+        $cinemaPayment = $cinema->load('payments')->payments->where('payment_status_id', 2); // 2 is the "Pending" Status
+        $available = $cinema->capacity - $cinemaPayment->count();
+        return view('admin.movie.show', ['payments' => $cinemaPayment, 'available' => $available]);
     }
 
     /**

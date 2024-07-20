@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionController;
 use App\Http\Controllers\MovieUserController;
-use App\Http\Controllers\TicketUserController;
-use App\Http\Controllers\TicketAdminController;
 use App\Http\Controllers\RegisteredUsersController;
-
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TicketAdminController;
+use App\Http\Controllers\TicketUserController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [SessionController::class, 'create']);
 Route::get('/auth', [SessionController::class, 'modeCreate']);
@@ -33,4 +32,4 @@ Route::post('/movies/{movie}/booking/confirm', [TicketUserController::class, 'st
 
 //Admin
 Route::get('/admin', [TicketAdminController::class, 'index']);
-Route::get('movies/payment/{cinema}', [TicketAdminController::class, 'show']);
+Route::get('admin/payment/{cinema}', [TicketAdminController::class, 'show']);

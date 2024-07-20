@@ -1,4 +1,4 @@
-<x-customer.layout>
+<x-layout>
     <x-slot:heading>
         Ticket Confirmation
     </x-slot:heading>
@@ -78,4 +78,4 @@
             </x-button.container>
         </form>
     </x-customer.ticket-layout>
-</x-customer.layout>
+</x-layout>

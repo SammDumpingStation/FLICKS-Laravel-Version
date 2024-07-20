@@ -12,7 +12,7 @@
 
 <body class="min-h-[100vh] py-[150px] bg-black text-white flex justify-center relative">
     <x-customer.nav />
-    <main class="flex flex-col gap-24 mb-[1000px] max-w-[1150px] w-full">
+    <main class="flex flex-col gap-24 max-w-[1150px] w-full">
         {{ $slot }}
     </main>
 </body>

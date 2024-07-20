@@ -1,8 +1,7 @@
-<x-customer.layout>
+<x-layout>
     <x-slot:heading>
         Movie Information
     </x-slot:heading>
-    <main class="flex flex-col w-full">
         <div class="gap-8 flex">
             <section class="flex flex-col items-center gap-2">
                 <div class="w-52 h-72 rounded-md">
@@ -67,5 +66,4 @@
                     Now</x-button.buttons>
             @endif
         </x-button.container>
-    </main>
-</x-customer.layout>
+</x-layout>

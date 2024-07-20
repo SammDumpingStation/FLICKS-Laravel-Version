@@ -1,8 +1,8 @@
-<x-customer.layout>
+<x-layout>
     <x-slot:heading>
         Home Page
     </x-slot:heading>
-    <main class="mb-[1000px]">
+    <main>
         <section
             class="flex justify-center items-center w-full gap-6 border border-secondary-grey py-14 px-[150px] rounded-[40px] flex-col mb-20">
             <h1 class="font-bold text-6xl  ">Ready to Watch?</h1>
@@ -26,4 +26,4 @@
             </x-customer.movie-group>
         </section>
     </main>
-</x-customer.layout>
+</x-layout>

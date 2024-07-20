@@ -1,4 +1,4 @@
-<x-customer.layout>
+<x-layout>
     <x-slot:heading>
         Select Seats
     </x-slot:heading>
@@ -35,4 +35,4 @@
                 <x-button.buttons>Confirm</x-button.buttons>
             </x-button.container>
     </x-customer.ticket-layout>
-</x-customer.layout>
+</x-layout>
