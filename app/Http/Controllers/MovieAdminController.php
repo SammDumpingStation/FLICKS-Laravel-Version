@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgeRating;
 use App\Models\Cinema;
+use App\Models\Dimension;
 use App\Models\Movie;
+use App\Models\MovieStatus;
 use Illuminate\Http\Request;
 
 class MovieAdminController extends Controller
@@ -21,7 +24,10 @@ class MovieAdminController extends Controller
      */
     public function create()
     {
-        return view('admin.movie.create');
+        $ageRatings = AgeRating::all();
+        $dimensions = Dimension::all();
+        $statuses = MovieStatus::all();
+        return view('admin.movie.create', ['ageRatings' => $ageRatings, 'dimensions' => $dimensions, 'statuses' => $statuses]);
     }
 
     /**

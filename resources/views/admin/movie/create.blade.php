@@ -3,58 +3,32 @@
         Add a new Movie
     </x-slot:heading>
     <x-admin.section-title title="Add A New Movie" />
-    <form class="w-full max-w-[900px] -mt-10 mx-auto flex flex-col gap-14" action="/register" method="POST">
+    <form class="w-full max-w-[900px] -mt-10 mx-auto flex flex-col gap-14" action="/admin/create-movie" method="POST">
         @csrf
         <section class="flex flex-col gap-8">
             <x-form.input label="Title" name="title" id="title" value="{{ old('title') }}" />
-            @error('title')
-                @php
-                    $message = str_replace('_', ' ', $message);
-                @endphp
-                <p class="text-red italic">{{ $message }}</p>
-            @enderror
+            <x-error name="title" />
+
             <div class="flex w-full gap-8">
                 <x-form.input label="Length" name="length" id="length" value="{{ old('length') }}" />
-                @error('length')
-                    @php
-                        $format = str_replace('_', ' ', $message);
-                    @endphp
-                    <p class=" text-red italic">{{ $format }}</p>
-                @enderror
+                <x-error name="length" />
 
                 <x-form.input label="Score Rating" name="score" id="score" value="{{ old('score') }}" />
-                @error('score')
-                    @php
-                        $message = str_replace('_', ' ', $message);
-                    @endphp
-                    <p class="text-red italic">{{ $message }}</p>
-                @enderror
+                <x-error name="score" />
+
             </div>
             <div class="flex w-full gap-8">
-                <x-form.input label="Age Rating" name="age_rating" id="age_rating" value="{{ old('age_rating') }}" />
-                @error('age_rating')
-                    @php
-                        $message = str_replace('_', ' ', $message);
-                    @endphp
-                    <p class="text-red italic">{{ $message }}</p>
-                @enderror
+                <x-admin.option label="Age Rating" filler="Choose the Appropriate Age Rating" name="age_rating" :datas="$ageRatings" />
+                <x-error name="age_rating" />
 
-                <x-form.input label="Dimension" name="dimension" id="dimension" value="{{ old('dimension') }}" />
-                @error('dimension')
-                    @php
-                        $format = str_replace('_', ' ', $message);
-                    @endphp
-                    <p class=" text-red italic">{{ $format }}</p>
-                @enderror
+                <x-admin.option label="Dimension" filler="Dimension of the Movie" name="dimension" :datas="$dimensions" />
+                <x-error name="dimension" />
+
             </div>
             <div class="flex w-full gap-8 max-w-[434px]">
-                <x-form.input label="Status" name="status" id="status" value="{{ old('status') }}" />
-                @error('status')
-                    @php
-                        $format = str_replace('_', ' ', $message);
-                    @endphp
-                    <p class=" text-red italic">{{ $format }}</p>
-                @enderror
+                <x-admin.option label="Status" filler="Current Status of the Movie" name="status" :datas="$statuses" />
+                <x-error name="status" />
+
             </div>
             <div class="w-full space-y-2">
                 <x-form.label label="Description" />
@@ -62,24 +36,16 @@
                     class="border-2 border-secondary-grey rounded-md w-full bg-transparent p-4 min-h-64"
                     placeholder="Enter Description here...."></textarea>
             </div>
-            @error('description')
-                @php
-                    $format = str_replace('_', ' ', $message);
-                @endphp
-                <p class=" text-red italic">{{ $format }}</p>
-            @enderror
+            <x-error name="description" />
+
             <div class="w-full space-y-2">
                 <x-form.label label="Image Upload" />
                 <textarea name="poster_link" id="poster_link"
                     class="border-2 border-secondary-grey rounded-md w-full bg-transparent p-4 min-h-64"
                     placeholder="Enter Description here...."></textarea>
             </div>
-            @error('poster_link')
-                @php
-                    $format = str_replace('_', ' ', $message);
-                @endphp
-                <p class=" text-red italic">{{ $format }}</p>
-            @enderror
+            <x-error name="description" />
+
         </section>
 
         <x-button.container type="wide">
