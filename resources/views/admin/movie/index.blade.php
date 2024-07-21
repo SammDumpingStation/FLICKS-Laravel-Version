@@ -2,5 +2,7 @@
     <x-slot:heading>
         All Movies Page
     </x-slot:heading>
-    <x-admin.section-title title="All Movies" />
+    <x-customer.movie-group title="All Movies">
+        <x-customer.movie-row :status="$movies" />
+    </x-customer.movie-group>
 </x-layout>

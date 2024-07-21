@@ -3,7 +3,7 @@
 @foreach ($status as $key => $movie)
     <a href="/movies/{{ $movie->id }}"
         class="flex flex-col max-w-fit justify-center basis-full items-center gap-4 ml-8">
-        @if ($movie->status_id === 1)
+        @if ($movie->movie_status_id === 1)
             <h1 class="font-bold text-4xl">C{{ $movie->cinema->number }}</h1>
         @endif
         <div class="h-72 w-52">

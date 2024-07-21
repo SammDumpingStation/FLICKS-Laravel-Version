@@ -16,7 +16,8 @@ class MovieAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.movie.index');
+        $movies = Movie::select('id', 'title', 'poster_link')->get();
+        return view('admin.movie.index', ['movies' => $movies]);
     }
 
     /**

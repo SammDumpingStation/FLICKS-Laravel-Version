@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cinema;
+use App\Services\MovieQuery;
 use Illuminate\Http\Request;
 
 class CinemaController extends Controller
@@ -56,7 +57,9 @@ class CinemaController extends Controller
     }
     public function updateCinemaAssignment()
     {
-        return view('admin.cinema.update-cinema');
+        $movies = (new MovieQuery)->status(1, 1);
+        $cinemaNumber = Cinema::select('number')->get();
+        return view('admin.cinema.update-cinema', ['movies' => $movies, 'cinemaNumbers' => $cinemaNumber]);
     }
     public function updateStatus()
     {
