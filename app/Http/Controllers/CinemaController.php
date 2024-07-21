@@ -63,7 +63,11 @@ class CinemaController extends Controller
     }
     public function updateStatus()
     {
-        return view('admin.cinema.update-status');
+        $movieQuery = new MovieQuery;
+        $nowShowing = $movieQuery->status(1);
+        $nextPicture = $movieQuery->status(2);
+        $comingSoon = $movieQuery->status(3);
+        return view('admin.cinema.update-status', ['nowShowing' => $nowShowing, 'nextPicture' => $nextPicture, 'comingSoon' => $comingSoon]);
     }
 
     /**
