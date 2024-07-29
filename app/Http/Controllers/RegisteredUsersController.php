@@ -26,11 +26,13 @@ class RegisteredUsersController extends Controller
      */
     public function index()
     {
-        return view('admin.user.register-users');
+        $user = User::where('admin', false)->get();
+        return view('admin.user.index.user', ['users' => $user]);
     }
     public function indexAdmin()
     {
-        return view('admin.user.register-admin');
+        $admin = User::where('admin', true)->get();
+        return view('admin.user.index.admin', ['admins' => $admin]);
     }
 
     /**
@@ -42,7 +44,7 @@ class RegisteredUsersController extends Controller
     }
     public function createAdmin()
     {
-        return view('admin.user.register-admin');
+        return view('admin.user.index-admin');
     }
 
     /**

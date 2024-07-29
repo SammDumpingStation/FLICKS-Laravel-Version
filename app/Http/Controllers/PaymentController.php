@@ -12,7 +12,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('admin.payment.index');
+        $payments = Payment::with('booking', 'booking.user')->where('payment_status_id', 1)->get();
+        return view('admin.payment.index', ['payments' => $payments]);
     }
 
     /**
