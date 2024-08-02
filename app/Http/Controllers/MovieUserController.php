@@ -6,6 +6,7 @@ use App\Helpers\Time;
 use App\Models\Cinema;
 use App\Models\Movie;
 use App\Services\MovieQuery;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class MovieUserController extends Controller
@@ -15,7 +16,6 @@ class MovieUserController extends Controller
      */
     public function index()
     {
-        Session::flush();
         $movieQuery = new MovieQuery;
         $nowShowing = $movieQuery->status(1);
         $nextPicture = $movieQuery->status(2);

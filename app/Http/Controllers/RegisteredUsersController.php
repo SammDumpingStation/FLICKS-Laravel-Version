@@ -59,6 +59,9 @@ class RegisteredUsersController extends Controller
             'phone_number' => ['required', 'string', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        $attributes['registered'] = true;
+        $attributes['admin'] = false;
+
         //Insert/Store in the database
         User::create($attributes);
 

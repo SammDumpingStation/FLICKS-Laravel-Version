@@ -29,9 +29,9 @@
                 <x-form.icons src="{{ Vite::asset('resources/icons/hide.png') }}" />
             </x-form.input>
             @error('password')
-                <p class="-mt-4 text-red italic">{{ $message }}</p>
+                <p class=" text-red italic">{{ $message }}</p>
             @enderror
-            <div class="flex gap-4 max-w-fit -mt-2 cursor-pointer">
+            <div class="flex gap-4 max-w-fit cursor-pointer">
                 <input type="checkbox" name="keep" id="keep" class="cursor-pointer">
                 <label for="keep" class="cursor-pointer">Keep me Logged In</label>
             </div>

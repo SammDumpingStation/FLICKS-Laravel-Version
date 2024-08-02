@@ -23,7 +23,8 @@ class SessionController extends Controller
         }
     }
 
-    public function modeCreate() {
+    public function modeCreate()
+    {
         return view('auth.mode');
     }
 
@@ -60,6 +61,6 @@ class SessionController extends Controller
     public function destroy()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/auth');
     }
 }

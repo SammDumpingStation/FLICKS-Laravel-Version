@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use App\Models\Booking;
-use App\Models\Payment;
 use App\Models\BookingSeat;
+use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
 class SessionServices
@@ -32,14 +32,17 @@ class SessionServices
 
     public function sessionToUser($validated)
     {
-        return User::create([
-            'first_name' => $validated['first-name'],
-            'last_name' => $validated['last-name'],
-            'email' => $validated['email'],
-            'phone_number' => $validated['phone-number'],
-            'registered' => false,
-            'admin' => false,
-        ]);
+        $user = User::firstOrCreate(['email' => $validated['email']], // Attributes to check for existence
+            [
+                'first_name' => $validated['first-name'],
+                'last_name' => $validated['last-name'],
+                'email' => $validated['email'],
+                'phone_number' => $validated['phone-number'],
+                'registered' => false,
+                'admin' => false,
+            ]
+        );
+        return $user;
     }
 
     public function sessionToBooking($ticketSession, $newUserId)
@@ -70,6 +73,7 @@ class SessionServices
             'booking_id' => $newBookingID,
             'payment_method_id' => 1,
             'payment_status_id' => 2,
+            'cinema_id' => 3
         ]);
 
     }
